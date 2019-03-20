@@ -2,8 +2,8 @@
 	include_once '../../function/helper.php';
 	include_once '../../function/koneksi.php';
 
-	$kd_mk = $_POST['kd-mk'];
-	$kelas = $_POST['kelas'];
+	$kd_mk = $_POST['kd-mk']; // menggunakan seassion 
+	$kelas = $_POST['kelas']; // menggunakan seassion
 
 	$file = uploaded();
 
