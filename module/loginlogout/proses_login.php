@@ -27,4 +27,4 @@
         header("location: ".BASE_URL."index.php?page=home");
     }
 
-    echo "sadhakl";
+    header("location: ".BASE_URL."index.php?notif=true");
