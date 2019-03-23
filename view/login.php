@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if(isset($_SESSION['status'])){
+        header("location: ".BASE_URL."index.php?page=home");
+    }
+?>
 <div class="container">
 	<form action="<?php echo BASE_URL."module/loginlogout/proses_login.php"; ?>" method="POST">
 	
