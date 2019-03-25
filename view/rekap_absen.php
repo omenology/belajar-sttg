@@ -1,19 +1,14 @@
 <?php 
 	
 	session_start();
-	$npm = isset($_SESSION["npm"]) ? $_SESSION["npm"] : false;
-	$nidn = isset($_SESSION["nidn"]) ? $_SESSION["nidn"] : false;
-	if($npm){
-		var_dump($npm);
-	}else{
-		var_dump($nidn);
-	}
+	$id_user = $_SESSION["id_user"];
 
-	$queryMhs = mysqli_query($koneksi, "SELECT absen.*,mata_kuliah.nama_mk FROM absen JOIN mata_kuliah ON absen.kode_mk=mata_kuliah.kode WHERE absen.npm='$npm'");
-	$queryDosen = mysqli_query($koneksi, "SELECT absen.*,mata_kuliah.*,mahasiswa.* FROM absen JOIN mata_kuliah JOIN mahasiswa ON absen.kode_mk=mata_kuliah.kode,absen.npm=mahasiswa.npm WHERE nidn='$nidn'");
+	var_dump($id_user);
 
+	$queryMhs = mysqli_query($koneksi, "SELECT absen.*,mata_kuliah.nama FROM absen JOIN mata_kuliah ON absen.kode_mk=mata_kuliah.kode WHERE absen.npm='$id_user'");
+	$queryDosen = mysqli_query($koneksi, "SELECT absen.*,mata_kuliah.*,mahasiswa.* FROM absen JOIN mata_kuliah JOIN mahasiswa ON absen.kode_mk=mata_kuliah.kode,absen.npm=mahasiswa.npm WHERE absen.nidn='$id_user'");
 
-	if($nidn){
+	if($id_user){
 
 			echo "<table border='1'>
 				<tr>
@@ -30,7 +25,7 @@
 				echo "<tr>
 						<td>$no</td>
 						<td>$rowDsn[kode_mk]</td>
-						<td>$rowDsn[nama_mk]</td>
+						<td>$rowDsn[nama]</td>
 						<td>$rowDsn[npm]</td>
 						<td>$rowDsn[nama]</td>
 						<td>$rowDsn[kelas]</td>
@@ -40,7 +35,7 @@
 			}
 			echo "</table>";
 
-	}elseif($npm){
+	}elseif($id_user){
 			echo "<table border='1'>
 				<tr>
 					<th>No</th>
@@ -54,7 +49,7 @@
 				echo "<tr>
 						<td>$no</td>
 						<td>$rowMhs[kode_mk]</td>
-						<td>$rowMhs[nama_mk]</td>
+						<td>$rowMhs[nama]</td>
 						<td>$rowMhs[kelas]</td>
 						<td>$rowMhs[absen]</td>
 					</tr>";
