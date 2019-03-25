@@ -6,9 +6,9 @@
 	var_dump($id_user);
 
 	$queryMhs = mysqli_query($koneksi, "SELECT absen.*,mata_kuliah.nama FROM absen JOIN mata_kuliah ON absen.kode_mk=mata_kuliah.kode WHERE absen.npm='$id_user'");
-	$queryDosen = mysqli_query($koneksi, "SELECT absen.*,mata_kuliah.*,mahasiswa.* FROM absen JOIN mata_kuliah JOIN mahasiswa ON absen.kode_mk=mata_kuliah.kode,absen.npm=mahasiswa.npm WHERE absen.nidn='$id_user'");
+	$queryDosen = mysqli_query($koneksi, "SELECT absen.*,mata_kuliah.*,mahasiswa.* FROM absen JOIN mata_kuliah ON absen.kode_mk=mata_kuliah.kode JOIN mahasiswa ON absen.npm=mahasiswa.npm WHERE absen.nidn='$id_user'");
 
-	if($id_user){
+	if($id_user==1){
 
 			echo "<table border='1'>
 				<tr>
