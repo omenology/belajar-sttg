@@ -1,5 +1,6 @@
 <?php
     session_start();
+    $notif = isset($_GET['notif']) ? $_GET['notif'] : false;
     if(isset($_SESSION['status'])){
         header("location: ".BASE_URL."index.php?page=home");
     }
@@ -8,12 +9,9 @@
 	<form action="<?php echo BASE_URL."module/loginlogout/proses_login.php"; ?>" method="POST">
 	
 		<?php
-		
-			$notif = isset($_GET['notif']) ? $_GET['notif'] : false;
-			if($notif == true){
+
+			if($notif == true)
 				echo "<div class='notif'>Maaf, email atau password yang kamu masukan tidak cocok</div>";
-			}
-		
 		?>
 
 		<div class="element-form">
