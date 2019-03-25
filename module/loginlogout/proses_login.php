@@ -15,13 +15,13 @@
             
             $rows= mysqli_fetch_assoc($mahasiswa);
             
-            $_SESSION['npm'] = $rows['npm'];
+            $_SESSION['id_user'] = $rows['npm'];
             $_SESSION['status'] = 'mahasiswa';
         }elseif(mysqli_num_rows ($dosen) == 1){
             
             $rows= mysqli_fetch_assoc($dosen);
             
-            $_SESSION['nidn'] = $rows['nidn'];
+            $_SESSION['id_user'] = $rows['nidn'];
             $_SESSION['status'] = 'dosen';
         }
         header("location: ".BASE_URL."index.php?page=home");
