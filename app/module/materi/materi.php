@@ -2,15 +2,16 @@
 	include_once '../../function/helper.php';
 	include_once '../../function/koneksi.php';
 
-	$kd_mk = $_POST['kd-mk']; // menggunakan seassion 
-	$kelas = $_POST['kelas']; // menggunakan seassion
+	session_start();
+	$kd_mk = $_SESSION['kode_mk']; 
+	$kelas = $_SESSION['kelas']; 
 
 	$file = uploaded();
 
 	if($file){
 		mysqli_query($koneksi,"INSERT INTO materi (kode_mk,kelas,materi) VALUES ('$kd_mk','$kelas','$file')");
 		
-		echo "string";
+		header("location:".BASE_URL."index.php?page=materi");
 	}
 
 	function uploaded(){
@@ -29,6 +30,8 @@
 		if(!in_array($ekstensiFile, $ekstensiFileValid)){
 			return false;
 		}
-		move_uploaded_file($tmpName, "../../dir/materi/".$fileName);
-		return $fileName;
+
+		$namaFileBaru = uniqid().".".$ekstensiFile;
+		move_uploaded_file($tmpName, "../../dir/materi/".$namaFileBaru);
+		return $namaFileBaru;
 	}
