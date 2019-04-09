@@ -1,5 +1,6 @@
 <?php 
 	include_once 'app/module/home/home.php';
+	
 ?>
 
 <div class="container">
@@ -18,5 +19,5 @@
 			?>
 			</a>
 		</section>
-	<?php endforeach;?>
+	<?php endforeach;var_dump($_SESSION['status']);?>
 </div>

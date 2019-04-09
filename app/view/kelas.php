@@ -2,6 +2,7 @@
 	session_start();
 	$kode_mk = $_SESSION['kode_mk'] = $_GET['kdmk'];
 	$kelas = $_SESSION['kelas'] = $_GET['kelas'];
+
 	echo uniqid();
 	
 ?>
@@ -11,3 +12,4 @@
 	<a href="<?php echo BASE_URL."index.php?page=materi"; ?>">Materi</a>
 	<a href="<?php echo BASE_URL."index.php?page=absen"; ?>">Absen</a>
 </div>
+<?php var_dump($_SESSION['status']); ?>
