@@ -19,5 +19,5 @@
 			?>
 			</a>
 		</section>
-	<?php endforeach;var_dump($_SESSION['status']);?>
+	<?php endforeach;?>
 </div>
