@@ -9,7 +9,7 @@
 	$file = uploaded();
 
 	if($file){
-		mysqli_query($koneksi,"INSERT INTO materi (kode_mk,kelas,materi,judul_materi) VALUES ('$kd_mk','$kelas','$file[1]','$file[0]')");
+		mysqli_query($koneksi,"INSERT INTO materi (kode_mk,kelas,file_materi,materi) VALUES ('$kd_mk','$kelas','$file[1]','$file[0]')");
 		
 		header("location:".BASE_URL."index.php?page=materi");
 	}
