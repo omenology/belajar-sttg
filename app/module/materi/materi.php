@@ -9,7 +9,7 @@
 	$file = uploaded();
 
 	if($file){
-		mysqli_query($koneksi,"INSERT INTO materi (kode_mk,kelas,materi) VALUES ('$kd_mk','$kelas','$file')");
+		mysqli_query($koneksi,"INSERT INTO materi (kode_mk,kelas,materi,judul_materi) VALUES ('$kd_mk','$kelas','$file[1]','$file[0]')");
 		
 		header("location:".BASE_URL."index.php?page=materi");
 	}
@@ -19,6 +19,7 @@
 		$error = $_FILES['materi']['error'];
 		$tmpName = $_FILES['materi']['tmp_name'];
 		$destination = BASE_URL."dir/materi/";
+		$file[] = $fileName;
 
 		if($error == 4){
 			return false;
@@ -32,6 +33,7 @@
 		}
 
 		$namaFileBaru = uniqid().".".$ekstensiFile;
+		$file[]=$namaFileBaru;
 		move_uploaded_file($tmpName, "../../dir/materi/".$namaFileBaru);
-		return $namaFileBaru;
+		return $file;
 	}
