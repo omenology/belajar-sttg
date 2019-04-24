@@ -1,8 +1,6 @@
 <?php 
 	include_once 'app/module/home/home.php';
-	
 ?>
-
 <div class="container">
 	<a href="<?= BASE_URL.'app/module/loginlogout/logout.php'?>">Logout</a>
 	<a href="<?= BASE_URL.'index.php?page=rekap_absen' ?>">rekap</a>

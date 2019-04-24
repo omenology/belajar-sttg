@@ -1,7 +1,6 @@
 <?php
 	include_once 'app/function/koneksi.php';
 	include_once 'app/function/helper.php';
-	
 ?>
 
 <!DOCTYPE html>
