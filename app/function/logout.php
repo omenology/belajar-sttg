@@ -1,5 +1,5 @@
 <?php
-    include_once("../../function/helper.php");
+    include_once("../function/config.php");
 	session_start();
 	
 	session_destroy();

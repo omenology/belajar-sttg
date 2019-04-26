@@ -1,7 +1,6 @@
 <?php
 
-    include_once("../../function/helper.php");
-    include_once("../../function/koneksi.php");
+    include_once("../function/config.php");
 
     $email = $_POST['email'];
 	$password = $_POST['password'];

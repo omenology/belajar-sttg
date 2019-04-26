@@ -6,7 +6,7 @@
     }
 ?>
 <div class="container">
-	<form action="<?php echo BASE_URL."app/module/loginlogout/proses_login.php"; ?>" method="POST">
+	<form action="<?php echo BASE_URL."app/function/proses_login.php"; ?>" method="POST">
 	
 		<?php
 

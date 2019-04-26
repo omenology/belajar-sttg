@@ -1,6 +1,5 @@
 <?php 
 include_once 'app/module/materi/materi_data.php';
-var_dump($query);
 ?>
 <div class="container">
 	<h2>Materi</h2>

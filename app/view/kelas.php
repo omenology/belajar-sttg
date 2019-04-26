@@ -2,9 +2,6 @@
 	session_start();
 	$kode_mk = $_SESSION['kode_mk'] = $_GET['kdmk'];
 	$kelas = $_SESSION['kelas'] = $_GET['kelas'];
-
-	echo uniqid();
-	
 ?>
 
 <div>

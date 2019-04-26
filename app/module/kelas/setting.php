@@ -1,8 +1,5 @@
 <?php
 	
-	include_once("../../function/helper.php");
-    include_once("../../function/koneksi.php");
-	
 	session_start();
 
 	$user_id = $_SESSION['id_user'];

@@ -18,5 +18,3 @@
 	}
 
 	mysqli_query($koneksi,"INSERT INTO tugas(kode_mk, kelas, no_tugas, judul, deskripsi, time_post, time_limit) VALUES ('$kd_mk','$kelas','$no_tugas','$judul','$deskripsi','$time_post','$time_limit')");
-
-	// var_dump($_POST);
