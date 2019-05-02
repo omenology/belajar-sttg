@@ -1,14 +1,13 @@
 <?php
 	
-	include_once("../../function/koneksi.php");
-	include_once("../../function/helper.php");
+	include_once("../../function/config.php");
 
 	session_start();
 
 	$user_id=$_SESSION['id_user'];
 	$level=$_SESSION['status'];
-	$kode_mk=$_POST['kode_mk'];
-	$kelas=$_POST['kelas'];
+	$kode_mk=$_SESSION['kode_mk'];
+	$kelas=$_SESSION['kelas'];
 	$button=$_POST['button'];
 
 	if($button=="Update Persentase Nilai"){
@@ -32,7 +31,7 @@
 		$c=$_POST['c'];
 		$d=$_POST['d'];
 
-		if($a<$b||$a<$c||$a<$d||$b<$c||$b<$d||$c<$d){
+		if($a>100||$a<$b||$a<$c||$a<$d||$b<$c||$b<$d||$c<$d){
 
 			echo "BALEG ANJING NGEUSIAN TEH";
 		}else{

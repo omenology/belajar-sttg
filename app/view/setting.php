@@ -4,8 +4,8 @@
 
 	$user_id = $_SESSION['id_user'];
 	$level = $_SESSION['status'];
-	$kode_mk = $_GET['kode_mk'];
-	$kelas = $_GET['kelas'];
+	$kode_mk = $_SESSION['kode_mk'];
+	$kelas = $_SESSION['kelas'];
 
 	$queryKelas=mysqli_query($koneksi, "SELECT * FROM jadwal_mata_kuliah WHERE kode_mk='$kode_mk' AND kelas='$kelas'");
 	$row=mysqli_fetch_assoc($queryKelas);
@@ -49,7 +49,7 @@
 		?>
 	</form>
 
-		<form action="update_setting.php" method="POST">
+		<form action="<?php echo BASE_URL."app/module/kelas/update_setting.php"; ?>" method="POST">
 		<br><label>Setting Range Nilai</label><br>
 		<p>A : &gt= <input type="text" name="a" value="<?php echo $row['a']; ?>"></p>
 		<p>B : &gt= <input type="text" name="b" value="<?php echo $row['b']; ?>"></p>

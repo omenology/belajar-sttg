@@ -5,7 +5,7 @@
 ?>
 
 <div>
-	<a href="<?php echo BASE_URL."app/module/kelas/setting.php?kode_mk=$kode_mk&kelas=$kelas"; ?>">Setting</a>
+	<a href="<?php echo BASE_URL."index.php?page=setting"; ?>">Setting</a>
 	<a href="<?php echo BASE_URL."index.php?page=materi"; ?>">Materi</a>
 	<a href="<?php echo BASE_URL."index.php?page=absen"; ?>">Absen</a>
 	<a href="<?php echo BASE_URL."index.php?page=tugas"; ?>">Tugas</a>
