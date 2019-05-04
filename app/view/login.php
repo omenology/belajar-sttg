@@ -5,28 +5,24 @@
         header("location: ".BASE_URL."index.php?page=home");
     }
 ?>
-<div class="container">
-	<form action="<?php echo BASE_URL."app/function/proses_login.php"; ?>" method="POST">
-	
-		<?php
+
+<div class="login">
+  <div id="formContent">
+      <h1>Login</h1>
+
+    <form action="<?php echo BASE_URL."app/function/proses_login.php"; ?>" method="POST">
+			<input type="text" name="email" placeholder="Email"/>
+			<input type="password" name="password"   placeholder="Password"/>
+			<input type="submit" value="login" />
+    </form>
+
+    <div id="formFooter">
+      <?php
 
 			if($notif == true)
-				echo "<div class='notif'>Maaf, email atau password yang kamu masukan tidak cocok</div>";
-		?>
+				echo "<div class='notif underlinehover'>Maaf, email atau password yang kamu masukan tidak cocok</div>";
+				?>
+    </div>
 
-		<div class="element-form">
-			<label>Email</label>
-			<span><input type="text" name="email" /></span>
-		</div>
-		
-		<div class="element-form">
-			<label>Password</label>
-			<span><input type="password" name="password" /></span>
-		</div>	
-
-		<div class="element-form">
-			<span><input type="submit" value="login" /></span>
-		</div>	
-	
-	</form>
+  </div>
 </div>
