@@ -1,3 +1,5 @@
+<a href="<?= BASE_URL.'index.php?page=rekap_absen' ?>">rekap</a>
+
 <?php
 session_start(); 
 
