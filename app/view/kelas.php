@@ -5,9 +5,10 @@
 	var_dump($_SESSION);
 ?>
 <div>
+
 	<a href="<?php echo BASE_URL."setting"; ?>">Setting</a>
 	<a href="<?php echo BASE_URL."materi"; ?>">Materi</a>
 	<a href="<?php echo BASE_URL."absen"; ?>">Absen</a>
 	<a href="<?php echo BASE_URL."tugas"; ?>">Tugas</a>
+
 </div>
-<?php?>
