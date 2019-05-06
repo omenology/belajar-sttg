@@ -23,7 +23,7 @@
             $_SESSION['id_user'] = $rows['nidn'];
             $_SESSION['status'] = 'dosen';
         }
-        header("location: ".BASE_URL."index.php?page=home");
+        header("location: ".BASE_URL."home");
     }
 
-    header("location: ".BASE_URL."index.php?notif=true");
+    header("location: ".BASE_URL."login/error");

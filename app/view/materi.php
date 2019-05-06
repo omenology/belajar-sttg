@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once 'app/module/materi/materi_data.php';
 ?>
 <div class="container">

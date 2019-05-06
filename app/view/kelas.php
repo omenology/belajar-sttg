@@ -1,14 +1,14 @@
-<?php 
+<?php
 	session_start();
-	$kode_mk = $_SESSION['kode_mk'] = $_GET['kdmk'];
-	$kelas = $_SESSION['kelas'] = $_GET['kelas'];
+	$kode_mk = $_SESSION['kode_mk'] = $url[1] ;
+	$kelas = $_SESSION['kelas'] =  $url[2] ;
+	var_dump($_SESSION);
 ?>
-
 <div>
-	<a href="<?php echo BASE_URL."index.php?page=setting"; ?>">Setting</a>
-	<a href="<?php echo BASE_URL."index.php?page=materi"; ?>">Materi</a>
-	<a href="<?php echo BASE_URL."index.php?page=absen"; ?>">Absen</a>
-	<a href="<?php echo BASE_URL."index.php?page=tugas"; ?>">Tugas</a>
+
+	<a href="<?php echo BASE_URL."setting"; ?>">Setting</a>
+	<a href="<?php echo BASE_URL."materi"; ?>">Materi</a>
+	<a href="<?php echo BASE_URL."absen"; ?>">Absen</a>
+	<a href="<?php echo BASE_URL."tugas"; ?>">Tugas</a>
 
 </div>
-<?php?>
