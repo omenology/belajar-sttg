@@ -10,3 +10,10 @@
 	include_once 'app/view/template/header.php';
 	include_once "app/view/$page.php";
 	include_once 'app/view/template/footer.php';
+
+// 	Options -Multiviews
+
+// RewriteEngine On
+// RewriteCond %{REQUEST_FILENAME} !-d
+// RewriteCond %{REQUEST_FILENAME} !-f
+// RewriteRule ^(.*)$ index.php?url=$1 [L]
