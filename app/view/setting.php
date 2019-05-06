@@ -1,5 +1,5 @@
 <?php
-include_once 'app/module/kelas/data_setting.php';
+	include_once 'app/module/kelas/data_setting.php';
 ?>
 <div>
 	<p>User Id = <?php echo $user_id ?></p>
@@ -40,7 +40,7 @@ include_once 'app/module/kelas/data_setting.php';
 		?>
 	</form>
 
-		<form action="<?php echo BASE_URL."app/module/kelas/update_setting.php"; ?>" method="POST">
+	<form action="<?php echo BASE_URL."app/module/kelas/update_setting.php"; ?>" method="POST">
 		<br><label>Setting Range Nilai</label><br>
 		<p>A : &gt= <input type="text" name="a" value="<?php echo $row['a']; ?>"></p>
 		<p>B : &gt= <input type="text" name="b" value="<?php echo $row['b']; ?>"></p>
@@ -56,5 +56,23 @@ include_once 'app/module/kelas/data_setting.php';
 			echo "<input type='submit' name='button' value='Update Range Nilai' />";
 		}
 		?>
+	</form>
+
+	<form action="<?php echo BASE_URL."app/module/kelas/update_setting.php"; ?>" method="POST">
+		<br><label>Pindah Kelas</label><br>
+		<select name='kelas'>
+			<?php 
+				foreach ($kelasTersedia as $row) {
+					if($row){
+			?>
+
+			<option value='<?php $row ?>'><?=$row?></option>
+
+			<?php
+					}
+				} 
+			?>
+		</select>
+		
 	</form>
 </div>
