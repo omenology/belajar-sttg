@@ -10,3 +10,6 @@
 	include_once 'app/view/template/header.php';
 	include_once "app/view/$page.php";
 	include_once 'app/view/template/footer.php';
+
+
+	//asdsadasdsad
