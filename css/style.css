@@ -1,3 +1,4 @@
+
 /*ganti warna head*/
 @keyframes bgcolor{
     0%{
@@ -50,7 +51,7 @@ body {
 }
 
 .login #formFooter {
-  animation: bgcolor infinite 10s;
+  animation: bgcolor infinite 30s;
   border-top: 1px solid #dce8f1;
   padding: 25px;
   text-align: center;
@@ -102,6 +103,27 @@ body {
 }
 .login .notif{
 	color: white;
+}
+.login .fa-eye{
+    position: absolute;
+    cursor: pointer;
+    right: 68px;
+    top: 165px;
+    opacity: .3;
+}
+.eyeon{
+    position: absolute;
+    cursor: pointer;
+    right: 68px;
+    top: 165px;
+    opacity: 1;
+}
+.login .fa-eye:hover{
+    opacity: 1;
+    position: absolute;
+    cursor: pointer;
+    right: 68px;
+    top: 165px;
 }
 
 /*MENU UTAMA*/
