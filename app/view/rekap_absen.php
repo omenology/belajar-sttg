@@ -1,24 +1,49 @@
-<?php 
-	
+<?php
+
 	session_start();
 	$id_user = $_SESSION["id_user"];
 	$status = $_SESSION["status"];
-	$kode_mk = $_SESSION["kode_mk"];
+	$rekap = $url[1];
+	var_dump($id_user);
 
-	var_dump($kode_mk);
+	if($rekap == "kelas"){
+		$kode_mk = $_SESSION["kode_mk"];
+		$queryMhs = mysqli_query($koneksi, "SELECT DISTINCT absen.kode_mk, absen.kelas, mata_kuliah.nama_mk FROM absen JOIN mata_kuliah ON absen.kode_mk=mata_kuliah.kode WHERE absen.npm='$id_user' AND kode_mk='$kode_mk'");
+		$absenMhs = mysqli_query($koneksi, "SELECT absen FROM absen WHERE npm='$id_user' AND kode_mk='$kode_mk' AND status='done'");
+		
+		$queryDosen = mysqli_query($koneksi, "SELECT DISTINCT absen.npm, absen.kode_mk, absen.kelas, mahasiswa.nama_mhs, mata_kuliah.nama_mk FROM absen JOIN mahasiswa ON absen.npm=mahasiswa.npm JOIN mata_kuliah ON absen.kode_mk=mata_kuliah.kode WHERE absen.nidn='$id_user' AND absen.kode_mk='$kode_mk'");
+		
+		foreach($queryDosen as $row){
+			var_dump($row["npm"]);
+			$absenDosen = mysqli_query($koneksi, "SELECT absen FROM absen WHERE nidn='$id_user' AND kode_mk='$kode_mk' AND status='done' AND npm='$row[npm]'");
+		}
+	}elseif($rekap == "depan"){
+		// $queryMhs = mysqli_query($koneksi, "SELECT DISTINCT absen.kode_mk, absen.kelas, mata_kuliah.nama_mk FROM absen JOIN mata_kuliah ON absen.kode_mk=mata_kuliah.kode WHERE absen.npm='$id_user'");
+		// foreach($queryMhs as $row){
+		// 	var_dump($row["kode_mk"]);
+		// 	$absenMhs = mysqli_query($koneksi, "SELECT absen FROM absen WHERE npm='$id_user' AND kode_mk='$row[kode_mk]' AND status='done'");
+		// 	foreach($absenMhs as $rowAbsen){
+		// 		var_dump($rowAbsen["absen"]);
+		// 	}
+		// }
+		$kdmk= mysqli_query($koneksi,"SELECT DISTINCT kode_mk FROM absen WHERE npm='$id_user'");
+		foreach ($kdmk as $row) {
+			$kd[]=$row['kode_mk'];
+		}
+		$i=0;
+		foreach ($kd as $kode) {
+			$absen = mysqli_query($koneksi,"SELECT * FROM absen WHERE npm='$id_user' AND kode_mk='$kode' AND status ='done'")
+			$i++;
+		}
 
-	$queryMhs = mysqli_query($koneksi, "SELECT DISTINCT absen.kode_mk, absen.kelas, mata_kuliah.nama_mk FROM absen JOIN mata_kuliah ON absen.kode_mk=mata_kuliah.kode WHERE absen.npm='$id_user' AND kode_mk='$kode_mk'");
-	$absenMhs = mysqli_query($koneksi, "SELECT absen FROM absen WHERE npm='$id_user' AND kode_mk='$kode_mk'");
+	}
+	var_dump($kd);
 	
-	$queryDosen = mysqli_query($koneksi, "SELECT DISTINCT absen.npm, absen.kode_mk, absen.kelas, mahasiswa.nama_mhs, mata_kuliah.nama_mk FROM absen JOIN mahasiswa ON absen.npm=mahasiswa.npm JOIN mata_kuliah ON absen.kode_mk=mata_kuliah.kode WHERE absen.nidn='$id_user' AND absen.kode_mk='$kode_mk'");
-	$absenDosen = mysqli_query($koneksi, "SELECT absen FROM absen WHERE nidn='$id_user' AND kode_mk='$kode_mk'");
-	$row = mysqli_fetch_assoc($queryDosen);
-
-	var_dump($row);
-
 	$no=1;
+?>
 
-if($id_user && $status == "mahasiswa") : ?>
+<?php if($id_user && $status == "mahasiswa") : ?>
+
 	<table>
 			<tr>
 				<th>No</th>
@@ -41,6 +66,7 @@ if($id_user && $status == "mahasiswa") : ?>
 				</th>
 			</tr>
 		<?php foreach($queryMhs as $rowMhs) : ?>
+			
 			<tr>
 					<td><?= $no ?></td>
 					<td><?= $rowMhs["kode_mk"] ?></td>
@@ -48,9 +74,10 @@ if($id_user && $status == "mahasiswa") : ?>
 					<td><?= $rowMhs["kelas"] ?></td>
 					<td>
 						<?php
-									foreach($absenMhs as $rowAbsen){
-									echo $rowAbsen["absen"];
-								}
+							var_dump($absenMhs);
+							foreach($absenMhs as $rowAbsen){
+								
+							}
 						?>
 					</td>
 			</tr>
@@ -93,8 +120,8 @@ if($id_user && $status == "mahasiswa") : ?>
 				<td><?= $rowDosen["kelas"] ?></td>
 				<td>
 					<?php 
-						foreach($absenDosen as $rowAbsen){
-							echo $rowAbsen["absen"];
+						foreach($absenDosen as $rowAbsenDosen){
+							echo $rowAbsenDosen["absen"];
 						}
 					 ?>
 				</td>

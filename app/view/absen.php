@@ -1,8 +1,7 @@
-<a href="<?= BASE_URL.'/rekap_absen' ?>">rekap</a>
+<a href="<?= BASE_URL.'rekap_absen/kelas' ?>">Rekap Absen</a>
 
 <?php
 session_start();
-
 $query = mysqli_query($koneksi,"SELECT * FROM absen WHERE npm = '$_SESSION[id_user]' AND kode_mk = '$_SESSION[kode_mk]' AND kelas = '$_SESSION[kelas]' AND status = 'open' AND absen = '0'");
 $open = mysqli_num_rows($query);
 

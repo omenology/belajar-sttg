@@ -3,6 +3,7 @@
 ?>
 <div class="container">
 	<a href="<?= BASE_URL.'app/function/logout.php'?>">Logout</a>
+	<a href="<?= BASE_URL.'rekap_absen/depan'?>">Rekap Absen</a>
 	<?php foreach ($query as $row):?>
 	<section style="border: 1px solid;display: inline-block;padding: 10px;margin: 5px;">
 		<a href="<?=BASE_URL."kelas/$row[kode_mk]/$row[kelas]"?>">
