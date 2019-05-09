@@ -1,14 +1,13 @@
-<?php
+<?php 
 	session_start();
-	$kode_mk = $_SESSION['kode_mk'] = $url[1] ;
-	$kelas = $_SESSION['kelas'] =  $url[2] ;
-	var_dump($_SESSION);
+	$kode_mk = $_SESSION['kode_mk'] = $_GET['kdmk'];
+	$kelas = $_SESSION['kelas'] = $_GET['kelas'];
 ?>
-<div>
 
-	<a href="<?php echo BASE_URL."setting"; ?>">Setting</a>
-	<a href="<?php echo BASE_URL."materi"; ?>">Materi</a>
-	<a href="<?php echo BASE_URL."absen"; ?>">Absen</a>
-	<a href="<?php echo BASE_URL."tugas"; ?>">Tugas</a>
+<div>
+	<a href="<?php echo BASE_URL."app/module/kelas/setting.php?kode_mk=$kode_mk&kelas=$kelas"; ?>">Setting</a>
+	<a href="<?php echo BASE_URL."index.php?page=materi"; ?>">Materi</a>
+	<a href="<?php echo BASE_URL."index.php?page=absen"; ?>">Absen</a>
+	<a href="<?php echo BASE_URL."index.php?page=tugas"; ?>">Tugas</a>
 
 </div>
