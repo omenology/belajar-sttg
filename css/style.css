@@ -27,6 +27,9 @@ body {
 
  
 }
+.login h1{
+  font-size: 32px;
+}
 /*TAMPPILAN LOGIN*/
 .login {
   margin-top: 8%;
@@ -82,13 +85,13 @@ body {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
-  padding: 15px 32px;
+  /*padding: 15px 32px;*/
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   margin: 5px;
-  width: 60%;
+  width: 80%;
   border: 2px solid #f6f6f6;
   border-radius: 5px;
 }
@@ -104,26 +107,39 @@ body {
 .login .notif{
 	color: white;
 }
-.login .fa-eye{
-    position: absolute;
-    cursor: pointer;
-    right: 68px;
-    top: 165px;
-    opacity: .3;
-}
 .eyeon{
     position: absolute;
     cursor: pointer;
-    right: 68px;
-    top: 165px;
-    opacity: 1;
+    right: 60px;
+    top: 185px;
+    opacity: .3;
+    
 }
-.login .fa-eye:hover{
+.login .fa-eye{
+    position: absolute;
+    cursor: pointer;
+    right: 60px;
+    top: 185px;
+}
+
+/*.login .fa-eye:hover{
     opacity: 1;
     position: absolute;
     cursor: pointer;
-    right: 68px;
-    top: 165px;
-}
+    right: 60px;
+    top: 185px;
+}*/
 
 /*MENU UTAMA*/
+/*NAVBAR*/
+nav ul a{
+  color: #141318;
+}
+/*CARD*/
+.card .card-title{
+  font-size: 20px;
+}
+/*sidebar*/
+.burger{
+  display:;
+}
