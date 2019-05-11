@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 24 Apr 2019 pada 15.40
--- Versi Server: 10.1.30-MariaDB
+-- Generation Time: May 06, 2019 at 07:50 AM
+-- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `absen`
+-- Table structure for table `absen`
 --
 
 CREATE TABLE `absen` (
@@ -39,7 +39,7 @@ CREATE TABLE `absen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `absen`
+-- Dumping data for table `absen`
 --
 
 INSERT INTO `absen` (`nidn`, `npm`, `kode_mk`, `kelas`, `absen`, `status`, `absen_ke`) VALUES
@@ -313,7 +313,7 @@ INSERT INTO `absen` (`nidn`, `npm`, `kode_mk`, `kelas`, `absen`, `status`, `abse
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dosen`
+-- Table structure for table `dosen`
 --
 
 CREATE TABLE `dosen` (
@@ -327,7 +327,7 @@ CREATE TABLE `dosen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `dosen`
+-- Dumping data for table `dosen`
 --
 
 INSERT INTO `dosen` (`nidn`, `nama_dsn`, `alamat`, `email`, `hp`, `password`, `foto`) VALUES
@@ -338,7 +338,7 @@ INSERT INTO `dosen` (`nidn`, `nama_dsn`, `alamat`, `email`, `hp`, `password`, `f
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jadwal_dosen`
+-- Table structure for table `jadwal_dosen`
 --
 
 CREATE TABLE `jadwal_dosen` (
@@ -348,7 +348,7 @@ CREATE TABLE `jadwal_dosen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `jadwal_dosen`
+-- Dumping data for table `jadwal_dosen`
 --
 
 INSERT INTO `jadwal_dosen` (`kode_mk`, `kelas`, `nidn`) VALUES
@@ -365,7 +365,7 @@ INSERT INTO `jadwal_dosen` (`kode_mk`, `kelas`, `nidn`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jadwal_mahasiswa`
+-- Table structure for table `jadwal_mahasiswa`
 --
 
 CREATE TABLE `jadwal_mahasiswa` (
@@ -375,7 +375,7 @@ CREATE TABLE `jadwal_mahasiswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `jadwal_mahasiswa`
+-- Dumping data for table `jadwal_mahasiswa`
 --
 
 INSERT INTO `jadwal_mahasiswa` (`npm`, `kode_mk`, `kelas`) VALUES
@@ -402,7 +402,7 @@ INSERT INTO `jadwal_mahasiswa` (`npm`, `kode_mk`, `kelas`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jadwal_mata_kuliah`
+-- Table structure for table `jadwal_mata_kuliah`
 --
 
 CREATE TABLE `jadwal_mata_kuliah` (
@@ -422,7 +422,7 @@ CREATE TABLE `jadwal_mata_kuliah` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `jadwal_mata_kuliah`
+-- Dumping data for table `jadwal_mata_kuliah`
 --
 
 INSERT INTO `jadwal_mata_kuliah` (`kode_mk`, `kelas`, `ruangan`, `jam`, `hari`, `absen`, `tugas`, `uts`, `uas`, `d`, `c`, `b`, `a`) VALUES
@@ -439,7 +439,7 @@ INSERT INTO `jadwal_mata_kuliah` (`kode_mk`, `kelas`, `ruangan`, `jam`, `hari`, 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mahasiswa`
+-- Table structure for table `mahasiswa`
 --
 
 CREATE TABLE `mahasiswa` (
@@ -454,7 +454,7 @@ CREATE TABLE `mahasiswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `mahasiswa`
+-- Dumping data for table `mahasiswa`
 --
 
 INSERT INTO `mahasiswa` (`npm`, `nama_mhs`, `alamat`, `tanggal_lahir`, `jenis_kelamin`, `email`, `password`, `foto`) VALUES
@@ -465,7 +465,7 @@ INSERT INTO `mahasiswa` (`npm`, `nama_mhs`, `alamat`, `tanggal_lahir`, `jenis_ke
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mata_kuliah`
+-- Table structure for table `mata_kuliah`
 --
 
 CREATE TABLE `mata_kuliah` (
@@ -475,7 +475,7 @@ CREATE TABLE `mata_kuliah` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `mata_kuliah`
+-- Dumping data for table `mata_kuliah`
 --
 
 INSERT INTO `mata_kuliah` (`kode`, `nama_mk`, `bobot`) VALUES
@@ -490,7 +490,7 @@ INSERT INTO `mata_kuliah` (`kode`, `nama_mk`, `bobot`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `materi`
+-- Table structure for table `materi`
 --
 
 CREATE TABLE `materi` (
@@ -501,7 +501,7 @@ CREATE TABLE `materi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `materi`
+-- Dumping data for table `materi`
 --
 
 INSERT INTO `materi` (`kode_mk`, `kelas`, `file_materi`, `materi`) VALUES
@@ -534,7 +534,7 @@ INSERT INTO `materi` (`kode_mk`, `kelas`, `file_materi`, `materi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `nilai`
+-- Table structure for table `nilai`
 --
 
 CREATE TABLE `nilai` (
@@ -548,7 +548,7 @@ CREATE TABLE `nilai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `nilai`
+-- Dumping data for table `nilai`
 --
 
 INSERT INTO `nilai` (`npm`, `kode_mk`, `nilai_rata_tugas`, `absen`, `uts`, `uas`, `akhir`) VALUES
@@ -575,7 +575,7 @@ INSERT INTO `nilai` (`npm`, `kode_mk`, `nilai_rata_tugas`, `absen`, `uts`, `uas`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `nilai_tugas`
+-- Table structure for table `nilai_tugas`
 --
 
 CREATE TABLE `nilai_tugas` (
@@ -586,7 +586,7 @@ CREATE TABLE `nilai_tugas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `nilai_tugas`
+-- Dumping data for table `nilai_tugas`
 --
 
 INSERT INTO `nilai_tugas` (`npm`, `kode_mk`, `no_tugas`, `nilai_tugas`) VALUES
@@ -641,20 +641,23 @@ INSERT INTO `nilai_tugas` (`npm`, `kode_mk`, `no_tugas`, `nilai_tugas`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pindah_kelas`
+-- Table structure for table `pindah_kelas`
 --
 
 CREATE TABLE `pindah_kelas` (
+  `nidn` varchar(30) NOT NULL,
   `kode_mk` varchar(10) NOT NULL,
-  `kelas_asal` varchar(1) NOT NULL,
-  `kelas_tujuan` varchar(1) NOT NULL,
-  `npm` varchar(7) NOT NULL
+  `kelas` varchar(1) NOT NULL,
+  `npm` varchar(7) NOT NULL,
+  `nidn2` varchar(30) NOT NULL,
+  `kode_mk2` varchar(10) NOT NULL,
+  `kelas2` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tugas`
+-- Table structure for table `tugas`
 --
 
 CREATE TABLE `tugas` (
@@ -668,7 +671,7 @@ CREATE TABLE `tugas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tugas`
+-- Dumping data for table `tugas`
 --
 
 INSERT INTO `tugas` (`kode_mk`, `kelas`, `no_tugas`, `judul`, `deskripsi`, `time_post`, `time_limit`) VALUES
@@ -699,7 +702,7 @@ INSERT INTO `tugas` (`kode_mk`, `kelas`, `no_tugas`, `judul`, `deskripsi`, `time
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tugas_mahasiswa`
+-- Table structure for table `tugas_mahasiswa`
 --
 
 CREATE TABLE `tugas_mahasiswa` (
@@ -710,7 +713,7 @@ CREATE TABLE `tugas_mahasiswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tugas_mahasiswa`
+-- Dumping data for table `tugas_mahasiswa`
 --
 
 INSERT INTO `tugas_mahasiswa` (`npm`, `kode_mk`, `no_tugas`, `file`) VALUES
@@ -849,44 +852,44 @@ ALTER TABLE `tugas_mahasiswa`
   ADD KEY `kode_mk` (`kode_mk`);
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `jadwal_dosen`
+-- Constraints for table `jadwal_dosen`
 --
 ALTER TABLE `jadwal_dosen`
   ADD CONSTRAINT `jadwal_dosen_ibfk_1` FOREIGN KEY (`kode_mk`) REFERENCES `mata_kuliah` (`kode`),
   ADD CONSTRAINT `jadwal_dosen_ibfk_2` FOREIGN KEY (`nidn`) REFERENCES `dosen` (`nidn`);
 
 --
--- Ketidakleluasaan untuk tabel `jadwal_mahasiswa`
+-- Constraints for table `jadwal_mahasiswa`
 --
 ALTER TABLE `jadwal_mahasiswa`
   ADD CONSTRAINT `jadwal_mahasiswa_ibfk_1` FOREIGN KEY (`npm`) REFERENCES `mahasiswa` (`npm`),
   ADD CONSTRAINT `jadwal_mahasiswa_ibfk_2` FOREIGN KEY (`kode_mk`) REFERENCES `mata_kuliah` (`kode`);
 
 --
--- Ketidakleluasaan untuk tabel `jadwal_mata_kuliah`
+-- Constraints for table `jadwal_mata_kuliah`
 --
 ALTER TABLE `jadwal_mata_kuliah`
   ADD CONSTRAINT `jadwal_mata_kuliah_ibfk_1` FOREIGN KEY (`kode_mk`) REFERENCES `mata_kuliah` (`kode`);
 
 --
--- Ketidakleluasaan untuk tabel `materi`
+-- Constraints for table `materi`
 --
 ALTER TABLE `materi`
   ADD CONSTRAINT `materi_ibfk_1` FOREIGN KEY (`kode_mk`) REFERENCES `mata_kuliah` (`kode`);
 
 --
--- Ketidakleluasaan untuk tabel `nilai`
+-- Constraints for table `nilai`
 --
 ALTER TABLE `nilai`
   ADD CONSTRAINT `nilai_ibfk_1` FOREIGN KEY (`npm`) REFERENCES `mahasiswa` (`npm`),
   ADD CONSTRAINT `nilai_ibfk_2` FOREIGN KEY (`kode_mk`) REFERENCES `mata_kuliah` (`kode`);
 
 --
--- Ketidakleluasaan untuk tabel `nilai_tugas`
+-- Constraints for table `nilai_tugas`
 --
 ALTER TABLE `nilai_tugas`
   ADD CONSTRAINT `nilai_tugas_ibfk_1` FOREIGN KEY (`npm`) REFERENCES `mahasiswa` (`npm`),
@@ -894,13 +897,13 @@ ALTER TABLE `nilai_tugas`
   ADD CONSTRAINT `nilai_tugas_ibfk_3` FOREIGN KEY (`kode_mk`) REFERENCES `mata_kuliah` (`kode`);
 
 --
--- Ketidakleluasaan untuk tabel `tugas`
+-- Constraints for table `tugas`
 --
 ALTER TABLE `tugas`
   ADD CONSTRAINT `tugas_ibfk_1` FOREIGN KEY (`kode_mk`) REFERENCES `mata_kuliah` (`kode`);
 
 --
--- Ketidakleluasaan untuk tabel `tugas_mahasiswa`
+-- Constraints for table `tugas_mahasiswa`
 --
 ALTER TABLE `tugas_mahasiswa`
   ADD CONSTRAINT `tugas_mahasiswa_ibfk_1` FOREIGN KEY (`npm`) REFERENCES `mahasiswa` (`npm`),

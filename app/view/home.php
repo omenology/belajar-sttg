@@ -37,4 +37,3 @@
 		<?php endforeach;?>
 		
 	</div>
-</div>
