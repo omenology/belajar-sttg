@@ -3,12 +3,12 @@
 	include_once "app/module/nilai_tugas/nilai_tugas.php";
 
 if($npm) : ?>
-	<form action="<?php echo BASE_URL."app/module/nilai_tugas_masuk/nilai_tugas.php"?>" method="post">
+	<form action="<?php echo BASE_URL."app/module/nilai_tugas/nilai_tugas_masuk.php"?>" method="post">
 		<input type="number" name="npm" value="<?= $npm ?>" readonly>
 		<input type="text" name="kode_mk" value="<?= $kode_mkGet ?>" readonly>
 		<input type="number" name="no_tugas" value="<?= $no_tugas ?>" readonly>
 		<input type="number" name="nilai" value="<?= $nilai_tugas ?>" placeholder="Nilai Tugas">
-		<input type="submit" name="kirim" value="Nilai Tugas">
+		<input type="submit" name="kirim" value="<?= $button ?>">
 	</form>
 <?php endif; ?>
 
@@ -19,7 +19,9 @@ if($npm) : ?>
 		<th>No Tugas</th>
 		<th>File</th>
 		<th>Nilai</th>
-		<th>Action</th>
+		<?php if($id_user && $status == "dosen") : ?>
+			<th>Action</th>
+		<?php endif; ?>
 	</tr>
 	<?php foreach($queryTugas as $rowTugas) : ?>
 		<tr>
