@@ -1,65 +1,58 @@
 
-/*ganti warna head*/
-@keyframes bgcolor{
+@keyframes bggradasi{
     0%{
-        background: slateblue ;
+        background-position: 0% 50%;
     }
-    20%{
-        background:pink ;
-    }
-    40%{
-        background:lightgreen ;
-    }
-    60%{
-        background:salmon;
-    }
-    80%{
-        background:skyblue;
+    50%{
+        background-position: 100% 50%;
     }
     100%{
-        background:slateblue;
+        background-position: 0% 50%;
     }
 }
+body{
+  background-color: whitesmoke;
+}
+.pebungkus{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin: 7% 10%;
+  box-shadow: 0 20px 20px 0 #DDDDDD;
 
-
-body {
-  font-family: "Poppins", sans-serif;
-
- 
+}
+.quote{
+  padding: 2% 10%;
+  background-image: linear-gradient(125deg, #6f86d6, #48c6ef,#EBA3D9,#EBE18E);
+  background-size: 400%;
+  animation: bggradasi 20s infinite;
 }
 .login h1{
   font-size: 32px;
 }
 /*TAMPPILAN LOGIN*/
 .login {
-  margin-top: 8%;
-  display: flex;
-  align-items: center;
-  flex-direction: column; 
+  align-items: center; 
   justify-content: center;
   min-height: 100%;
-  padding: 20px;
+  padding-left: 10%;
+  background-color: white;
 }
-
+.login .logo{
+  width: 20%;
+  margin: 5% 0;
+}
 .login #formContent {
-  border-radius: 10px;
+  /*border-radius: 10px;*/
   background: #fff;
   padding: 30px;
   width: 90%;
   max-width: 450px;
   position: relative;
   padding: 0px;
-  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
   text-align: center;
 }
 
-.login #formFooter {
-  animation: bgcolor infinite 30s;
-  border-top: 1px solid #dce8f1;
-  padding: 25px;
-  text-align: center;
-  border-radius: 0 0 10px 10px;
-}
+
 
 /* FORM TYPOGRAPHY*/
 
@@ -71,11 +64,10 @@ body {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  text-transform: uppercase;
   font-size: 13px;
   box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
   border-radius: 5px ;
-  margin: 5px 20px 40px 20px;
+  margin: 40px 20px 40px 20px;
 }
 .login input[type=submit]:hover{
 	background-color: #4881F4;
@@ -90,7 +82,7 @@ body {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 5px;
+  margin: 2% 0;
   width: 80%;
   border: 2px solid #f6f6f6;
   border-radius: 5px;
@@ -99,37 +91,129 @@ body {
 .login input[type=text]:focus,.login input[type=password]:focus {
   background-color: #fff;
   border-bottom: 2px solid #5fbae9;
+
 }
 
 .login input[type=text]:placeholder,.login input[type=password]:placeholder {
   color: #cccccc;
 }
 .login .notif{
-	color: white;
+	color: Red;
+  font-weight: bold;
+  padding-bottom: 30px;
+}
+.pswd{
+  position: relative;
 }
 .eyeon{
-    position: absolute;
+    position: relative;
     cursor: pointer;
-    right: 60px;
-    top: 185px;
+    right: 55px;
+    top: 27px;
     opacity: .3;
     
 }
 .login .fa-eye{
     position: absolute;
     cursor: pointer;
-    right: 60px;
-    top: 185px;
+    right: 55px;
+    top: 27px;
 }
 
-/*.login .fa-eye:hover{
-    opacity: 1;
+@media(max-width : 1028px){
+
+.pebungkus{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin: 7% 10%;
+  box-shadow: 0 2px 20px 0 #E7E7E7;
+}
+.quote{
+  padding: 2% 10%;
+  background-image: linear-gradient(125deg, #6f86d6, #48c6ef,#EBA3D9,#EBE18E);
+  background-size: 400%;
+  animation: bggradasi 20s infinite;
+}
+.quote h2{
+  font-size: 30px;
+}
+.login h1{
+  font-size: 32px;
+}
+
+/* FORM TYPOGRAPHY*/
+
+.login input[type=submit]{
+  background-color: #56baed;
+  border: none;
+  color: white;
+  padding: 15px 60px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  border-radius: 5px ;
+  margin: 20px 20px 40px 20px;
+}
+.login input[type=text],.login input[type=password] {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 100%;
+  border: 2px solid #f6f6f6;
+  border-radius: 5px;
+}
+
+.eyeon{
     position: absolute;
     cursor: pointer;
-    right: 60px;
-    top: 185px;
-}*/
+    right: 5px;
+    top: 22px;
+    opacity: .3;
+    
+}
+.login .fa-eye{
+    position: absolute;
+    cursor: pointer;
+    right: 5px;
+    top: 22px;
+}
+  }
+@media(max-width : 726px){
+  .pebungkus{
+  display: grid;
+  grid-template-columns: 100%;
+  margin: 25% 2%;
+  box-shadow: 0 2px 20px 0 #E7E7E7;
+}
+.quote{
+ display: none;
+}
+.quote h2{
+  display: none;
+}
 
+.eyeon{
+    position: absolute;
+    cursor: pointer;
+    right: 5px;
+    top: 22px;
+    opacity: .3;
+    
+}
+.login .fa-eye{
+    position: absolute;
+    cursor: pointer;
+    right: 5x;
+    top: 22px;
+}
+}
 /*MENU UTAMA*/
 /*NAVBAR*/
 nav ul a{
@@ -137,9 +221,17 @@ nav ul a{
 }
 /*CARD*/
 .card .card-title{
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: bold;
 }
 /*sidebar*/
 .burger{
   display:;
+}
+.sidenav .sisi{
+  font-size: 15px;
+  font-weight: normal;
+}
+.sidenav li>a>i{
+  margin : 0 15px 0 0;
 }
