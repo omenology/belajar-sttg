@@ -10,5 +10,7 @@
 	<a href="<?php echo BASE_URL."materi"; ?>">Materi</a>
 	<a href="<?php echo BASE_URL."absen"; ?>">Absen</a>
 	<a href="<?php echo BASE_URL."tugas"; ?>">Tugas</a>
+	<a href="<?php echo BASE_URL."nilai_tugas" ?>">NilaiTugas</a>
+	<a href="<?php echo BASE_URL."nilai" ?>">Nilai</a>
 
 </div>
