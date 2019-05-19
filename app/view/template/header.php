@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title></title>
+		<title>Belajar STTG</title>
+		<link rel="icon" href="<?=BASE_URL.'img/Logo-STTG.png'?>">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link rel="stylesheet" href="<?=BASE_URL.'css/materialize/materialize.min.css'?>" >

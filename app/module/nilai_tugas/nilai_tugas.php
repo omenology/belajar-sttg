@@ -11,7 +11,6 @@
 		$button = "Kirim";
 	}
 
-	session_start();
 	$id_user = $_SESSION["id_user"];
 	$status = $_SESSION["status"];
 	$kode_mk = $_SESSION["kode_mk"];
