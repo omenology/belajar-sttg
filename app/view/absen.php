@@ -7,14 +7,14 @@ $open = mysqli_num_rows($query);
 if ($_SESSION['status'] == "dosen"):?>
 
 <div class="container">
-	<form action="<?= BASE_URL?>app/module/absen/absen.php" method="POST">
+	<form action="<?= BASE_URL?>app/module/absen/absen_proses.php" method="POST">
 		<input type="submit" name="btn-absen" value="open">
 		<input type="submit" name="btn-absen" value="done">
 	</form>
 </div>
 <?php elseif ($open >=1) : ?>
 <div class="container">
-	<form action="<?= BASE_URL?>app/module/absen/absen.php" method="POST">
+	<form action="<?= BASE_URL?>app/module/absen/absen_proses.php" method="POST">
 		<input type="submit" name="btn-absen" value="absen">
 	</form>
 </div>
