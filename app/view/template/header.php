@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title></title>
+		<title>Belajar STTG</title>
+		<link rel="icon" href="<?=BASE_URL.'img/Logo-STTG.png'?>">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<link rel="stylesheet" href="<?=BASE_URL.'css/materialize/materialize.min.css'?>">
+		<link rel="stylesheet" href="<?=BASE_URL.'css/materialize/materialize.min.css'?>" >
 		<link rel="stylesheet" type="text/css" href="<?= BASE_URL.'css/style.css'?>">
 		
 	</head>
 	<body>
+		<?php if(isset($_SESSION['status'])) :  ?>
 		<!-- navbar -->
 		<div class="navbar-fixed">
 			<nav class="nav-wrapper blue darken-3 ">
@@ -36,18 +39,18 @@
 					<div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
 				</li>
 				<li>
-					<div class="collapsible-header"><i class="material-icons">assignment</i>Rekap Absen</div>
-					<div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-				</li>
-				<li>
-					<div class="collapsible-header"><i class="material-icons">storage</i>Rekap Nilai</div>
-					<div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+					<a href="<?= BASE_URL.'app/view/rekap_absen.php'?>" class="collapsible-header sisi">
+						<i class="material-icons icsisi">assignment</i>
+					Rekap Absen</a>
 				</li>
 			</ul>
-			<li></li>
+			<li>
+				
+			</li>
 			<li><div class="divider"></div></li>
 			<li><a class="subheader">Subheader</a></li>
 			<li>
 				<a href="<?= BASE_URL.'app/function/logout.php'?>">Logout</a>
 			</li>
 		</ul>
+		<?php endif; ?>

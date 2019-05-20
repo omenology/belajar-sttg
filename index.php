@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 	include_once 'app/function/config.php';
 	include_once 'app/function/parseUrl.php';
 	$url = isset($_GET['url']) ? $_GET['url'] : "home"; 
