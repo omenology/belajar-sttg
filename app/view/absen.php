@@ -3,8 +3,6 @@
 <?php
 $query = mysqli_query($koneksi,"SELECT * FROM absen WHERE npm = '$_SESSION[id_user]' AND kode_mk = '$_SESSION[kode_mk]' AND kelas = '$_SESSION[kelas]' AND status = 'open' AND absen = '0'");
 $open = mysqli_num_rows($query);
-var_dump($open);
-var_dump($_SESSION['id_user']);
 
 if ($_SESSION['status'] == "dosen"):?>
 
@@ -21,5 +19,3 @@ if ($_SESSION['status'] == "dosen"):?>
 	</form>
 </div>
 <?php endif;
-
-var_dump($_SESSION['status']);?>
