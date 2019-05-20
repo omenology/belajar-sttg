@@ -22,4 +22,4 @@
 	}else{
 		mysqli_query($koneksi,"UPDATE absen SET absen = '1' WHERE npm = '$id_user' AND kode_mk = '$kd_mk' AND kelas = '$kelas' AND status = 'open'");
 	}
-	header("location: ".BASE_URL."index.php?page=kelas&kdmk=$kd_mk&kelas=$kelas");
+	header("location: ".BASE_URL."kelas/$kd_mk/$kelas");
