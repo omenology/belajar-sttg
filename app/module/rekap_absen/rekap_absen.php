@@ -1,7 +1,13 @@
-<?php 
+<?php
+
+	session_start();
+	$id_user = $_SESSION["id_user"];
+	$status = $_SESSION["status"];
+	$kode_mk = $_SESSION["kode_mk"];
+
+	$rekap = $url[1];
 
 if($rekap == "kelas"){
-		$kode_mk = $_SESSION["kode_mk"];
 
 		$queryMhs = mysqli_query($koneksi, "SELECT DISTINCT absen.kode_mk, absen.kelas, mata_kuliah.nama_mk FROM absen JOIN mata_kuliah ON absen.kode_mk=mata_kuliah.kode WHERE absen.npm='$id_user' AND kode_mk='$kode_mk'");
 

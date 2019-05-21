@@ -1,11 +1,5 @@
 <?php
 
-	session_start();
-	$id_user = $_SESSION["id_user"];
-	$status = $_SESSION["status"];
-	$rekap = $url[1];
-	var_dump($id_user);
-
 	include_once "app/module/rekap_absen/rekap_absen.php";
 	$no=1;
 ?>
