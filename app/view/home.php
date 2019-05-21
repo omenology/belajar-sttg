@@ -6,7 +6,7 @@
 <div class="container-fluid">
 	<br>
 	<div class="row">
-		<?php foreach ($query as $row):?>
+		<?php foreach ($data as $row):?>
 		<div class="col s12 m6 l3">
 			<div class="card">
 				<div class="card-image waves-effect waves-block waves-light">

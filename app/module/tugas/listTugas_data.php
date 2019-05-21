@@ -1,5 +1,4 @@
 <?php
-session_start();
 var_dump($_SESSION);
 $npm = $_SESSION['id_user'];
 $kd_mk = $_SESSION['kode_mk'];
