@@ -1,6 +1,5 @@
 <?php
 
-	session_start();
 	$id_user = $_SESSION["id_user"];
 	$status = $_SESSION["status"];
 	$rekap = $url[1];
@@ -19,6 +18,7 @@
 				<th>Mata Kuliah</th>
 				<th>Kelas</th>
 				<th>Absen</th>
+				<th>Persentase</th>
 			</tr>
 			
 			<tr>
@@ -33,6 +33,7 @@
 						}
 					?>
 				</th>
+				<td></td>
 			</thead>
 		</tr>
 		<?php foreach($queryMhs as $rowMhs) : ?>
@@ -53,6 +54,7 @@
 					}
 				?>
 			</td>
+			<td><?php persenAbsen($rowMhs["kode_mk"]); ?></td>
 		</tr>
 		<?php $no++;
 		endforeach; ?>

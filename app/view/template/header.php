@@ -39,7 +39,7 @@
 					<div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
 				</li>
 				<li>
-					<a href="<?= BASE_URL.'app/view/rekap_absen.php'?>" class="collapsible-header sisi">
+					<a href="<?= BASE_URL.'rekap_absen/depan'?>" class="collapsible-header sisi">
 						<i class="material-icons icsisi">assignment</i>
 					Rekap Absen</a>
 				</li>
