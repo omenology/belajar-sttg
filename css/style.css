@@ -235,6 +235,15 @@ nav ul a{
 .sidenav li>a>i{
   margin : 0 15px 0 0;
 }
+
+
+nav .sidenav-trigger {
+  margin: 0 5px;
+}
+/*card*/
+.cardcon{
+  text-align: center;
+}
 /*TABEL*/
 table{
   margin-top: 10%;

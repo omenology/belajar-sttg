@@ -9,10 +9,10 @@
 	$no=1;
 ?>
 <?php if($id_user && $status == "mahasiswa") : ?>
-<div class="container">
+<div class="container-fluid">
 	<table>
 		<thead>
-			<tr class="teal lighten-1">
+			<tr class="grey lighten-1">
 				<th>No</th>
 				<th>Kode</th>
 				<th>Mata Kuliah</th>
@@ -47,7 +47,7 @@
 				<?php
 					if($rekap == "kelas"){
 						foreach($absenMhs as $rowAbsen){
-							echo $rowAbsen["absen"].' ';
+							echo $rowAbsen["absen"];
 						}
 					}elseif($rekap == "depan"){
 						absMhs($rowMhs["kode_mk"]);
@@ -97,10 +97,10 @@
 				<?php
 					if($rekap == "kelas"){
 						foreach($absenDosen as $rowAbsenDosen){
-							echo $rowAbsenDosen["absen"];
+							echo $rowAbsenDosen["absen"].' ';
 						}
 					}elseif($rekap == "depan"){
-						absDosen($rowDosen["npm"],$rowDosen["kode_mk"]);
+						absDosen($rowDosen["npm"],$rowDosen["kode_mk"].' ');
 					}
 				?>
 			</td>
