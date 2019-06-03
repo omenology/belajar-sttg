@@ -1,5 +1,7 @@
 <?php
-	include_once 'app/module/tugas/listTugas_data.php';
+$kode_mk = $_SESSION['kode_mk'];
+$tugas = mysqli_query($koneksi, "SELECT no_tugas, judul, time_limit FROM tugas WHERE kode_mk='$kode_mk'");	
+
 ?>
 
 <div class="container">
@@ -23,19 +25,16 @@
 			
 		</tr>
 
-		<?php $i=1 ?>
-		<?php foreach ($tugas as $row ): ?>
-			
+		<?php $i=1; ?>
+		<?php foreach($tugas as $row ) : ?>	
 		<tr>
-			
 			<td><?= $i; ?></td>
-			<td><a href="<?=BASE_URL;?>app/view/detail_tugas.php?no_tugas=<?=$row["no_tugas"]?>&kelas=<?=$row["kelas"]?>&kode_mk=<?=$row["kode_mk"]?>"><?=$row["judul"];?></a></td>
+			<td><a href="http://localhost/belajar-sttg/detail_tugas/<?=$row['no_tugas']?>"><?=$row["judul"];?></a></td>
 			<td><?= $row["time_limit"];?></td>
-
 		</tr>
 
 		<?php $i++; ?>
-		<?php endforeach ?>
+		<?php endforeach; ?>
 
 	</table>
 

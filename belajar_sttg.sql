@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 06, 2019 at 07:50 AM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.1
+-- Host: localhost
+-- Generation Time: Jun 03, 2019 at 07:01 AM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -645,13 +645,10 @@ INSERT INTO `nilai_tugas` (`npm`, `kode_mk`, `no_tugas`, `nilai_tugas`) VALUES
 --
 
 CREATE TABLE `pindah_kelas` (
-  `nidn` varchar(30) NOT NULL,
   `kode_mk` varchar(10) NOT NULL,
-  `kelas` varchar(1) NOT NULL,
-  `npm` varchar(7) NOT NULL,
-  `nidn2` varchar(30) NOT NULL,
-  `kode_mk2` varchar(10) NOT NULL,
-  `kelas2` varchar(1) NOT NULL
+  `kelas_asal` varchar(1) NOT NULL,
+  `kelas_tujuan` varchar(1) NOT NULL,
+  `npm` varchar(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -697,7 +694,11 @@ INSERT INTO `tugas` (`kode_mk`, `kelas`, `no_tugas`, `judul`, `deskripsi`, `time
 ('kdmk7', 'E', 1, 'tgs_rak1', 'flip', '2019-03-14 11:00:00', '2019-03-21 11:00:00'),
 ('kdmk7', 'E', 2, 'tgs_rak2', 'flop', '2019-03-14 11:00:00', '2019-03-21 11:00:00'),
 ('kdmk1', 'C', 1, 'tes judul', 'tes deskripsi', '2019-04-13 00:00:00', '2019-04-14 00:00:00'),
-('kdmk2', 'B', 4, 'testes', 'tes deskripsi tes', '2019-04-13 00:00:00', '2019-04-14 00:00:00');
+('kdmk2', 'B', 4, 'testes', 'tes deskripsi tes', '2019-04-13 00:00:00', '2019-04-14 00:00:00'),
+('kdmk5', 'D', 3, '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+('kdmk5', 'D', 4, '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+('kdmk1', 'C', 2, 'tesno', 'alskdjalsjdlkasjdklajkdljdslkajdkjxsszslkhxjkdjsjk', '2019-05-22 00:00:00', '2019-05-23 00:00:00'),
+('kdmk3', 'C', 4, 'aya', 'tugas', '2019-06-03 00:00:00', '2019-06-10 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -709,64 +710,65 @@ CREATE TABLE `tugas_mahasiswa` (
   `npm` varchar(7) NOT NULL,
   `kode_mk` varchar(10) NOT NULL,
   `no_tugas` int(11) NOT NULL,
-  `file` varchar(60) NOT NULL
+  `file` varchar(60) NOT NULL,
+  `file_tugas` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tugas_mahasiswa`
 --
 
-INSERT INTO `tugas_mahasiswa` (`npm`, `kode_mk`, `no_tugas`, `file`) VALUES
-('1606001', 'kdmk1', 1, 'tgs db 1 file 1 mhs 1'),
-('1606001', 'kdmk1', 1, 'tgs db 1 file 2 mhs 1'),
-('1606001', 'kdmk1', 2, 'tgs db 2 file 1 mhs 1'),
-('1606001', 'kdmk1', 3, 'tgs db 3 file 1 mhs 1'),
-('1606001', 'kdmk2', 1, 'tgs an 1 file 1 mhs 1'),
-('1606001', 'kdmk2', 2, 'tgs an 2 file 1 mhs 1'),
-('1606001', 'kdmk2', 3, 'tgs an 3 file 1 mhs 1'),
-('1606001', 'kdmk3', 1, 'tgs ds 1 file 1 mhs 1'),
-('1606001', 'kdmk3', 2, 'tgs ds 2 file 1 mhs 1'),
-('1606001', 'kdmk3', 3, 'tgs ds 3 file 1 mhs 1'),
-('1606002', 'kdmk1', 1, 'tgs db 1 file 1 mhs 2'),
-('1606002', 'kdmk1', 1, 'tgs db 1 file 2 mhs 2'),
-('1606002', 'kdmk1', 2, 'tgs db 2 file 1 mhs 2'),
-('1606002', 'kdmk1', 3, 'tgs db 3 file 1 mhs 2'),
-('1606002', 'kdmk2', 1, 'tgs an 1 file 1 mhs 2'),
-('1606002', 'kdmk2', 2, 'tgs an 2 file 1 mhs 2'),
-('1606002', 'kdmk2', 3, 'tgs an 3 file 1 mhs 2'),
-('1606002', 'kdmk3', 1, 'tgs ds 1 file 1 mhs 2'),
-('1606002', 'kdmk3', 2, 'tgs ds 2 file 1 mhs 2'),
-('1606002', 'kdmk3', 3, 'tgs ds 3 file 1 mhs 2'),
-('1606003', 'kdmk1', 1, 'tgs db 1 file 1 mhs 3'),
-('1606003', 'kdmk1', 1, 'tgs db 1 file 2 mhs 3'),
-('1606003', 'kdmk1', 2, 'tgs db 2 file 1 mhs 3'),
-('1606003', 'kdmk1', 3, 'tgs db 3 file 1 mhs 3'),
-('1606003', 'kdmk2', 1, 'tgs an 1 file 1 mhs 3'),
-('1606003', 'kdmk2', 3, 'tgs an 2 file 1 mhs 3'),
-('1606003', 'kdmk2', 3, 'tgs an 3 file 1 mhs 3'),
-('1606003', 'kdmk3', 1, 'tgs ds 1 file 1 mhs 3'),
-('1606003', 'kdmk3', 2, 'tgs ds 2 file 1 mhs 3'),
-('1606003', 'kdmk3', 3, 'tgs ds 3 file 1 mhs 3'),
-('1606003', 'kdmk4', 1, 'tgs fa 1 mhs 3'),
-('1606003', 'kdmk4', 2, 'tgs fa 2 mhs 3'),
-('1606001', 'kdmk5', 1, 'tgs bp 1 mhs 1'),
-('1606001', 'kdmk5', 2, 'tgs bp 2 mhs 1'),
-('1606001', 'kdmk6', 1, 'tgs or 1 mhs 1'),
-('1606001', 'kdmk6', 2, 'tgs or 2 mhs 1'),
-('1606002', 'kdmk5', 1, 'tgs bp 1 mhs 2'),
-('1606002', 'kdmk5', 2, 'tgs bp 2 mhs 2'),
-('1606002', 'kdmk6', 1, 'tgs or 1 mhs 2'),
-('1606002', 'kdmk6', 2, 'tgs or 2 mhs 2'),
-('1606003', 'kdmk5', 1, 'tgs bp 1 mhs 3'),
-('1606003', 'kdmk5', 2, 'tgs bp 2 mhs 3'),
-('1606003', 'kdmk6', 1, 'tgs or 1 mhs 3'),
-('1606003', 'kdmk6', 2, 'tgs or 2 mhs 3'),
-('1606001', 'kdmk7', 1, 'tgs br 1 mhs 1'),
-('1606001', 'kdmk7', 2, 'tgs br 2 mhs 1'),
-('1606002', 'kdmk7', 1, 'tgs br 1 mhs 2'),
-('1606002', 'kdmk7', 2, 'tgs br 2 mhs 2'),
-('1606003', 'kdmk7', 1, 'tgs br 1 mhs 3'),
-('1606003', 'kdmk7', 2, 'tgs br 2 mhs 3');
+INSERT INTO `tugas_mahasiswa` (`npm`, `kode_mk`, `no_tugas`, `file`, `file_tugas`) VALUES
+('1606001', 'kdmk1', 1, 'tgs db 1 file 1 mhs 1', ''),
+('1606001', 'kdmk1', 1, 'tgs db 1 file 2 mhs 1', ''),
+('1606001', 'kdmk1', 2, 'tgs db 2 file 1 mhs 1', ''),
+('1606001', 'kdmk1', 3, 'tgs db 3 file 1 mhs 1', ''),
+('1606001', 'kdmk2', 1, 'tgs an 1 file 1 mhs 1', ''),
+('1606001', 'kdmk2', 2, 'tgs an 2 file 1 mhs 1', ''),
+('1606001', 'kdmk2', 3, 'tgs an 3 file 1 mhs 1', ''),
+('1606001', 'kdmk3', 1, 'tgs ds 1 file 1 mhs 1', ''),
+('1606001', 'kdmk3', 2, 'tgs ds 2 file 1 mhs 1', ''),
+('1606001', 'kdmk3', 3, 'tgs ds 3 file 1 mhs 1', ''),
+('1606002', 'kdmk1', 1, 'tgs db 1 file 1 mhs 2', ''),
+('1606002', 'kdmk1', 1, 'tgs db 1 file 2 mhs 2', ''),
+('1606002', 'kdmk1', 2, 'tgs db 2 file 1 mhs 2', ''),
+('1606002', 'kdmk1', 3, 'tgs db 3 file 1 mhs 2', ''),
+('1606002', 'kdmk2', 1, 'tgs an 1 file 1 mhs 2', ''),
+('1606002', 'kdmk2', 2, 'tgs an 2 file 1 mhs 2', ''),
+('1606002', 'kdmk2', 3, 'tgs an 3 file 1 mhs 2', ''),
+('1606002', 'kdmk3', 1, 'tgs ds 1 file 1 mhs 2', ''),
+('1606002', 'kdmk3', 2, 'tgs ds 2 file 1 mhs 2', ''),
+('1606002', 'kdmk3', 3, 'tgs ds 3 file 1 mhs 2', ''),
+('1606003', 'kdmk1', 1, 'tgs db 1 file 1 mhs 3', ''),
+('1606003', 'kdmk1', 1, 'tgs db 1 file 2 mhs 3', ''),
+('1606003', 'kdmk1', 2, 'tgs db 2 file 1 mhs 3', ''),
+('1606003', 'kdmk1', 3, 'tgs db 3 file 1 mhs 3', ''),
+('1606003', 'kdmk2', 1, 'tgs an 1 file 1 mhs 3', ''),
+('1606003', 'kdmk2', 3, 'tgs an 2 file 1 mhs 3', ''),
+('1606003', 'kdmk2', 3, 'tgs an 3 file 1 mhs 3', ''),
+('1606003', 'kdmk3', 1, 'tgs ds 1 file 1 mhs 3', ''),
+('1606003', 'kdmk3', 2, 'tgs ds 2 file 1 mhs 3', ''),
+('1606003', 'kdmk3', 3, 'tgs ds 3 file 1 mhs 3', ''),
+('1606003', 'kdmk4', 1, 'tgs fa 1 mhs 3', ''),
+('1606003', 'kdmk4', 2, 'tgs fa 2 mhs 3', ''),
+('1606001', 'kdmk5', 1, 'tgs bp 1 mhs 1', ''),
+('1606001', 'kdmk5', 2, 'tgs bp 2 mhs 1', ''),
+('1606001', 'kdmk6', 1, 'tgs or 1 mhs 1', ''),
+('1606001', 'kdmk6', 2, 'tgs or 2 mhs 1', ''),
+('1606002', 'kdmk5', 1, 'tgs bp 1 mhs 2', ''),
+('1606002', 'kdmk5', 2, 'tgs bp 2 mhs 2', ''),
+('1606002', 'kdmk6', 1, 'tgs or 1 mhs 2', ''),
+('1606002', 'kdmk6', 2, 'tgs or 2 mhs 2', ''),
+('1606003', 'kdmk5', 1, 'tgs bp 1 mhs 3', ''),
+('1606003', 'kdmk5', 2, 'tgs bp 2 mhs 3', ''),
+('1606003', 'kdmk6', 1, 'tgs or 1 mhs 3', ''),
+('1606003', 'kdmk6', 2, 'tgs or 2 mhs 3', ''),
+('1606001', 'kdmk7', 1, 'tgs br 1 mhs 1', ''),
+('1606001', 'kdmk7', 2, 'tgs br 2 mhs 1', ''),
+('1606002', 'kdmk7', 1, 'tgs br 1 mhs 2', ''),
+('1606002', 'kdmk7', 2, 'tgs br 2 mhs 2', ''),
+('1606003', 'kdmk7', 1, 'tgs br 1 mhs 3', ''),
+('1606003', 'kdmk7', 2, 'tgs br 2 mhs 3', '');
 
 --
 -- Indexes for dumped tables
