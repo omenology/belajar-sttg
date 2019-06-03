@@ -10,7 +10,7 @@
 		<div class="col s12 m6 l3">
 			<div class="card">
 				<div class="card-image waves-effect waves-block waves-light">
-					<img class="activator" src="<?=BASE_URL.'img/bg-login.png'?>">
+					<img class="activator" src="<?=BASE_URL.'img/banner/bg'.rand(1,4).'.jpg'?>">
 				</div>
 				<div class="card-content">
 					<span class="card-title activator grey-text text-darken-4">

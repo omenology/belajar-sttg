@@ -15,6 +15,6 @@ session_start();
 	include_once "app/view/$page.php";
 	include_once 'app/view/template/footer.php';
 
-	//asdasd
+
 
 

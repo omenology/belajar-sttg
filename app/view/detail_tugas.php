@@ -1,6 +1,5 @@
 <?php
-	include_once 'app/module/tugas/listTugas_data.php';
-	var_dump($tugas);
+	include_once 'app/module/tugas/detailTugas_data.php';
 ?>
 <div class="container">
 	<h2>Tugas</h2>
