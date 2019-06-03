@@ -10,56 +10,57 @@
 ?>
 <?php if($id_user && $status == "mahasiswa") : ?>
 <div class="container">
-	<table>
-		<thead>
-			<tr class="teal lighten-1">
-				<th>No</th>
-				<th>Kode</th>
-				<th>Mata Kuliah</th>
-				<th>Kelas</th>
-				<th>Absen</th>
-				<th>Persentase</th>
+	<?php if($rekap == "depan") : ?>
+		<table>
+			<thead>
+				<tr class="teal lighten-1">
+					<th>No</th>
+					<th>Kode Matakuliah</th>
+					<th>Nama Matakuliah</th>
+					<th>Absen</th>
+					<th>Persentase</th>
+				</tr>
+				
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<th>
+						<?php
+							for($i=1; $i<=14; $i++){
+								echo $i.' ';
+							}
+						?>
+					</th>
+					<td></td>
+				</thead>
 			</tr>
+			<?php foreach($queryMhs as $rowMhs) : ?>
 			
 			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<th>
+				<td><?= $no ?></td>
+				<td><?= $rowMhs["kode_mk"] ?></td>
+				<td><?= $rowMhs["nama_mk"] ?></td>
+				<td>
 					<?php
-						for($i=1; $i<=14; $i++){
-							echo $i.' ';
+						if($rekap == "kelas"){
+							foreach($absenMhs as $rowAbsen){
+								echo $rowAbsen["absen"].' ';
+							}
+						}elseif($rekap == "depan"){
+							absMhs($rowMhs["kode_mk"]);
 						}
 					?>
-				</th>
-				<td></td>
-			</thead>
-		</tr>
-		<?php foreach($queryMhs as $rowMhs) : ?>
-		
-		<tr>
-			<td><?= $no ?></td>
-			<td><?= $rowMhs["kode_mk"] ?></td>
-			<td><?= $rowMhs["nama_mk"] ?></td>
-			<td><?= $rowMhs["kelas"] ?></td>
-			<td>
-				<?php
-					if($rekap == "kelas"){
-						foreach($absenMhs as $rowAbsen){
-							echo $rowAbsen["absen"].' ';
-						}
-					}elseif($rekap == "depan"){
-						absMhs($rowMhs["kode_mk"]);
-					}
-				?>
-			</td>
-			<td><?php persenAbsen($rowMhs["kode_mk"]); ?></td>
-		</tr>
-		<?php $no++;
-		endforeach; ?>
-	</table>
-	<?php elseif($id_user && $status == "dosen") : ?>
+				</td>
+				<td><?php persenAbsen($rowMhs["kode_mk"]); ?></td>
+			</tr>
+			<?php $no++;
+			endforeach; ?>
+		</table>
+	<?php elseif($rekap == "kelas") : ?>
+			<?php persenAbsen($kode_mk); ?>
+	<?php endif; ?>
+<?php elseif($id_user && $status == "dosen") : ?>
 	<table>
 		<tr>
 			<th>No</th>
@@ -69,6 +70,7 @@
 			<th>Mata Kuliah</th>
 			<th>Kelas</th>
 			<th>Absen</th>
+			<th>Persentasi</th>
 		</tr>
 		<tr>
 			<td></td>
@@ -84,6 +86,7 @@
 					}
 				?>
 			</th>
+			<td></td>
 		</tr>
 		<?php foreach($queryDosen as $rowDosen) : ?>
 		<tr>
@@ -100,10 +103,11 @@
 							echo $rowAbsenDosen["absen"];
 						}
 					}elseif($rekap == "depan"){
-						absDosen($rowDosen["npm"],$rowDosen["kode_mk"]);
+						absDosen($rowDosen["npm"], $rowDosen["kode_mk"]);
 					}
 				?>
 			</td>
+			<td><?php persenAbsenDosen($rowDosen["npm"], $rowDosen["kode_mk"]) ?></td>
 		</tr>
 		<?php $no++;
 		endforeach; ?>
