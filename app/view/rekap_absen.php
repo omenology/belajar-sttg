@@ -9,6 +9,7 @@
 	$no=1;
 ?>
 <?php if($id_user && $status == "mahasiswa") : ?>
+<<<<<<< HEAD
 <div class="container-fluid">
 	<table>
 		<thead>
@@ -19,19 +20,51 @@
 				<th>Kelas</th>
 				<th>Absen</th>
 				<th>Persentase</th>
+=======
+<div class="container">
+	<?php if($rekap == "depan") : ?>
+		<table>
+			<thead>
+				<tr class="teal lighten-1">
+					<th>No</th>
+					<th>Kode Matakuliah</th>
+					<th>Nama Matakuliah</th>
+					<th>Absen</th>
+					<th>Persentase</th>
+				</tr>
+				
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<th>
+						<?php
+							for($i=1; $i<=14; $i++){
+								echo $i.' ';
+							}
+						?>
+					</th>
+					<td></td>
+				</thead>
+>>>>>>> bdd2e6b7b3080094a1f509ea4d631355050a0d69
 			</tr>
+			<?php foreach($queryMhs as $rowMhs) : ?>
 			
 			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<th>
+				<td><?= $no ?></td>
+				<td><?= $rowMhs["kode_mk"] ?></td>
+				<td><?= $rowMhs["nama_mk"] ?></td>
+				<td>
 					<?php
-						for($i=1; $i<=14; $i++){
-							echo $i.' ';
+						if($rekap == "kelas"){
+							foreach($absenMhs as $rowAbsen){
+								echo $rowAbsen["absen"].' ';
+							}
+						}elseif($rekap == "depan"){
+							absMhs($rowMhs["kode_mk"]);
 						}
 					?>
+<<<<<<< HEAD
 				</th>
 				<td></td>
 			</thead>
@@ -60,6 +93,18 @@
 		endforeach; ?>
 	</table>
 	<?php elseif($id_user && $status == "dosen") : ?>
+=======
+				</td>
+				<td><?php persenAbsen($rowMhs["kode_mk"]); ?></td>
+			</tr>
+			<?php $no++;
+			endforeach; ?>
+		</table>
+	<?php elseif($rekap == "kelas") : ?>
+			<?php persenAbsen($kode_mk); ?>
+	<?php endif; ?>
+<?php elseif($id_user && $status == "dosen") : ?>
+>>>>>>> bdd2e6b7b3080094a1f509ea4d631355050a0d69
 	<table>
 		<tr>
 			<th>No</th>
@@ -69,6 +114,7 @@
 			<th>Mata Kuliah</th>
 			<th>Kelas</th>
 			<th>Absen</th>
+			<th>Persentasi</th>
 		</tr>
 		<tr>
 			<td></td>
@@ -84,6 +130,7 @@
 					}
 				?>
 			</th>
+			<td></td>
 		</tr>
 		<?php foreach($queryDosen as $rowDosen) : ?>
 		<tr>
@@ -100,10 +147,15 @@
 							echo $rowAbsenDosen["absen"].' ';
 						}
 					}elseif($rekap == "depan"){
+<<<<<<< HEAD
 						absDosen($rowDosen["npm"],$rowDosen["kode_mk"].' ');
+=======
+						absDosen($rowDosen["npm"], $rowDosen["kode_mk"]);
+>>>>>>> bdd2e6b7b3080094a1f509ea4d631355050a0d69
 					}
 				?>
 			</td>
+			<td><?php persenAbsenDosen($rowDosen["npm"], $rowDosen["kode_mk"]) ?></td>
 		</tr>
 		<?php $no++;
 		endforeach; ?>

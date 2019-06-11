@@ -1,9 +1,6 @@
 <?php
-$kode_mk = $_SESSION['kode_mk'];
-$tugas = mysqli_query($koneksi, "SELECT no_tugas, judul, time_limit FROM tugas WHERE kode_mk='$kode_mk'");	
-
+include_once 'app/module/tugas/listTugas_data.php';	
 ?>
-
 <div class="container">
 	<h2>Materi</h2>
 	<form action="<?=BASE_URL.'app/module/tugas/tugas.php' ?>" method="POST">
