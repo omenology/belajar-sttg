@@ -19,10 +19,11 @@
 
 		if($absen+$tugas+$uts+$uas!=100){
 
-			echo "PERSENTASE MAH TOTALNA 100 ATUH GOBLOK";
+			header("location:".BASE_URL."setting" );
 		}else{
 
 			$queryPersentase=mysqli_query($koneksi, "UPDATE jadwal_mata_kuliah SET absen='$absen', tugas='$tugas', uts='$uts', uas='$uas' WHERE kode_mk='$kode_mk' AND kelas='$kelas'");
+			header("location:".BASE_URL."setting" );
 		}
 	}elseif($button=="Update Range Nilai"){
 
@@ -33,12 +34,12 @@
 
 		if($a>100||$a<$b||$a<$c||$a<$d||$b<$c||$b<$d||$c<$d){
 
-			echo "BALEG ANJING NGEUSIAN TEH";
+			header("location:".BASE_URL."setting" );
 		}else{
 
 			$queryRange=mysqli_query($koneksi, "UPDATE jadwal_mata_kuliah SET a='$a', b='$b', c='$c', d='$d' WHERE kode_mk='$kode_mk' AND kelas='$kelas'");
+			header("location:".BASE_URL."setting" );
 		}
-	}
 
 
 ?>
