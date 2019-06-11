@@ -23,7 +23,7 @@
 </div>
 <div id="setting_form">
 
-	<form action="update_setting.php" method="POST">
+	<form action="<?php echo BASE_URL."app/module/kelas/update_setting.php"; ?>" method="POST">
 		<br><label>Setting Persentase Nilai</label><br>
 		<p>Absen = <input type="text" name="absen" value="<?php echo $row['absen']; ?>">%</p>
 		<p>Tugas = <input type="text" name="tugas" value="<?php echo $row['tugas']; ?>">%</p>
@@ -57,22 +57,57 @@
 		}
 		?>
 	</form>
-
-	<form action="<?php echo BASE_URL."app/module/kelas/update_setting.php"; ?>" method="POST">
+	<?php 
+		if($level=="mahasiswa"){
+	?>
+	<form action="<?php echo BASE_URL."app/module/kelas/pindah_kelas.php"; ?>" method="POST">
 		<br><label>Pindah Kelas</label><br>
-		<select name='kelas'>
+		<select name='kelas_tujuan'>
 			<?php 
-				foreach ($kelasTersedia as $row) {
+				foreach($kelasTersedia as $row){
+
 					if($row){
 			?>
 
-			<option value='<?php $row ?>'><?=$row?></option>
-
+			<option value='<?= $row ?>'><?=$row?></option>
 			<?php
 					}
 				} 
 			?>
 		</select>
-		
+		<input type='submit' name='button' value='Pindah Kelas' />
 	</form>
+	<?php
+		}elseif($level=="dosen"){
+	?>
+
+		<form action="<?= BASE_URL."app/module/kelas/pindah_kelas.php"; ?>" method="POST">
+			<br><label>Pindah Jadwal</label><br>
+		</form>
+
+	<?php
+			if($rowPindahKelas){
+	?>
+	<label>Data Permintaan Pindah Kelas</label>
+		<table>
+			<tr>
+				<td>NPM</td>
+				<td>Action</td>
+			</tr>
+			<?php
+				foreach ($rowPindahKelas as $key) {
+				?>
+				<tr>
+					<td><?= $key ?></td>
+					<td><a href="app/module/kelas/pindah_kelas.php?button=Terima&npm=<?= $key ?>">Terima</td>
+					<td><a href="app/module/kelas/pindah_kelas.php?button=Tolak&npm=<?= $key ?>">Tolak</td>
+				</tr>
+				<?php		
+				}
+			?>
+		</table>
+	<?php
+			}
+		}
+	?>
 </div>

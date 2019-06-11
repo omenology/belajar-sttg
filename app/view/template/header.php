@@ -18,6 +18,11 @@
 					<li>
 						<a href="" data-target="slide-out" class="sidenav-trigger"><i class="material-icons" style="color: white">menu</i></a>
 					</li>
+					<li>
+						<a href="<?= BASE_URL?>" class="sidenav-trigger" style="display: flex; align-items: center;">
+							<img src="<?= BASE_URL.'img/logo.png'?>" >
+						</a>
+					</li>
 				</ul>
 			</nav>
 		</div>

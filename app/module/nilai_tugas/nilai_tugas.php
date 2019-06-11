@@ -17,6 +17,8 @@
 
 	$queryTugas = mysqli_query($koneksi, "SELECT * FROM tugas_mahasiswa WHERE kode_mk='$kode_mk'");
 
+	$tugasMhs = mysqli_query($koneksi, "SELECT * FROM tugas_mahasiswa WHERE npm='$id_user' AND kode_mk='$kode_mk'");
+
 	function queryNilai( $npm, $kode_mk, $no_tugas ){
 		global $koneksi;
 		global $id_user;
@@ -27,7 +29,7 @@
 		$rowNilai = mysqli_fetch_assoc($queryNilai);
 		if(mysqli_num_rows($queryNilai) == 0){
 			echo "
-				<td>Belum di Nilai</td>";
+				<td>-</td>";
 				if($id_user && $status == "dosen"){
 					echo "<td><a href='".BASE_URL."nilai_tugas/$npm/$kode_mk/$no_tugas'>Kasih Nilai</a></td>";
 				}
