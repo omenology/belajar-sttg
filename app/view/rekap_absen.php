@@ -9,7 +9,6 @@
 	$no=1;
 ?>
 <?php if($id_user && $status == "mahasiswa") : ?>
-<<<<<<< HEAD
 <div class="container-fluid">
 	<table>
 		<thead>
@@ -20,7 +19,6 @@
 				<th>Kelas</th>
 				<th>Absen</th>
 				<th>Persentase</th>
-=======
 <div class="container">
 	<?php if($rekap == "depan") : ?>
 		<table>
@@ -46,7 +44,6 @@
 					</th>
 					<td></td>
 				</thead>
->>>>>>> bdd2e6b7b3080094a1f509ea4d631355050a0d69
 			</tr>
 			<?php foreach($queryMhs as $rowMhs) : ?>
 			
@@ -64,7 +61,6 @@
 							absMhs($rowMhs["kode_mk"]);
 						}
 					?>
-<<<<<<< HEAD
 				</th>
 				<td></td>
 			</thead>
@@ -93,7 +89,6 @@
 		endforeach; ?>
 	</table>
 	<?php elseif($id_user && $status == "dosen") : ?>
-=======
 				</td>
 				<td><?php persenAbsen($rowMhs["kode_mk"]); ?></td>
 			</tr>
@@ -104,7 +99,6 @@
 			<?php persenAbsen($kode_mk); ?>
 	<?php endif; ?>
 <?php elseif($id_user && $status == "dosen") : ?>
->>>>>>> bdd2e6b7b3080094a1f509ea4d631355050a0d69
 	<table>
 		<tr>
 			<th>No</th>
@@ -147,11 +141,8 @@
 							echo $rowAbsenDosen["absen"].' ';
 						}
 					}elseif($rekap == "depan"){
-<<<<<<< HEAD
 						absDosen($rowDosen["npm"],$rowDosen["kode_mk"].' ');
-=======
 						absDosen($rowDosen["npm"], $rowDosen["kode_mk"]);
->>>>>>> bdd2e6b7b3080094a1f509ea4d631355050a0d69
 					}
 				?>
 			</td>
