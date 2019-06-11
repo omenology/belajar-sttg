@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jun 03, 2019 at 07:01 AM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.3
+-- Host: 127.0.0.1
+-- Generation Time: Jun 11, 2019 at 08:00 AM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -646,8 +646,7 @@ INSERT INTO `nilai_tugas` (`npm`, `kode_mk`, `no_tugas`, `nilai_tugas`) VALUES
 
 CREATE TABLE `pindah_kelas` (
   `kode_mk` varchar(10) NOT NULL,
-  `kelas_asal` varchar(1) NOT NULL,
-  `kelas_tujuan` varchar(1) NOT NULL,
+  `kelas` varchar(1) NOT NULL,
   `npm` varchar(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

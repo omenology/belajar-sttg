@@ -62,14 +62,14 @@
 	?>
 	<form action="<?php echo BASE_URL."app/module/kelas/pindah_kelas.php"; ?>" method="POST">
 		<br><label>Pindah Kelas</label><br>
-		<select name='kelas'>
+		<select name='kelas_tujuan'>
 			<?php 
 				foreach($kelasTersedia as $row){
 
 					if($row){
 			?>
 
-			<option value='<?php $row ?>'><?=$row?></option>
+			<option value='<?= $row ?>'><?=$row?></option>
 			<?php
 					}
 				} 
@@ -80,24 +80,34 @@
 	<?php
 		}elseif($level=="dosen"){
 	?>
+
+		<form action="<?= BASE_URL."app/module/kelas/pindah_kelas.php"; ?>" method="POST">
+			<br><label>Pindah Jadwal</label><br>
+		</form>
+
+	<?php
+			if($rowPindahKelas){
+	?>
 	<label>Data Permintaan Pindah Kelas</label>
 		<table>
 			<tr>
-				<th>NPM</th>
+				<td>NPM</td>
+				<td>Action</td>
 			</tr>
 			<?php
 				foreach ($rowPindahKelas as $key) {
 				?>
 				<tr>
-					<td><?=$key['npm']?></td>
+					<td><?= $key ?></td>
+					<td><a href="app/module/kelas/pindah_kelas.php?button=Terima&npm=<?= $key ?>">Terima</td>
+					<td><a href="app/module/kelas/pindah_kelas.php?button=Tolak&npm=<?= $key ?>">Tolak</td>
 				</tr>
-				<tr><a href="app/module/kelas/pindah_kelas.php?button=Terima&npm=$key['npm']">Terima</tr>
-				<tr><a href="app/module/kelas/pindah_kelas.php?button=Tolak&npm=$key['npm']">Tolak</tr>
 				<?php		
 				}
 			?>
 		</table>
 	<?php
+			}
 		}
 	?>
 </div>
