@@ -235,3 +235,7 @@ nav ul a{
 .sidenav li>a>i{
   margin : 0 15px 0 0;
 }
+/*TABEL*/
+table{
+  margin-top: 10%;
+}

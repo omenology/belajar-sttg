@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title></title>
+		<title>Belajar STTG</title>
+		<link rel="icon" href="<?=BASE_URL.'img/Logo-STTG.png'?>">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link rel="stylesheet" href="<?=BASE_URL.'css/materialize/materialize.min.css'?>" >
@@ -38,7 +39,7 @@
 					<div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
 				</li>
 				<li>
-					<a href="<?= BASE_URL.'app/view/rekap_absen.php'?>" class="collapsible-header sisi">
+					<a href="<?= BASE_URL.'rekap_absen/depan'?>" class="collapsible-header sisi">
 						<i class="material-icons icsisi">assignment</i>
 					Rekap Absen</a>
 				</li>

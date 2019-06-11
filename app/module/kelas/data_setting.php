@@ -1,7 +1,5 @@
 <?php 
 	
-	session_start();
-
 	$user_id = $_SESSION['id_user'];
 	$level = $_SESSION['status'];
 	$kode_mk = $_SESSION['kode_mk'];

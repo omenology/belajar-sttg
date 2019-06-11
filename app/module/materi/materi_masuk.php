@@ -1,5 +1,8 @@
 <?php
 	include_once '../../function/config.php';
+	include_once '../../function/Database.php';
+
+	$db = new Database;
 
 	session_start();
 	$kd_mk = $_SESSION['kode_mk']; 
@@ -8,7 +11,12 @@
 	$file = uploaded();
 
 	if($file){
-		mysqli_query($koneksi,"INSERT INTO materi (kode_mk,kelas,file_materi,materi) VALUES ('$kd_mk','$kelas','$file[1]','$file[0]')");
+		$db->query("INSERT INTO materi (kode_mk,kelas,file_materi,materi) VALUES (:kdmk,:kelas,:file_materi,:materi)");
+		$db->bind('kdmk',$kd_mk);
+		$db->bind('kelas',$kelas);
+		$db->bind('file_materi',$file[1]);
+		$db->bind('materi',$file[0]);
+		$db->execute();
 		
 		header("location:".BASE_URL."index.php?page=materi");
 	}

@@ -1,5 +1,4 @@
 <?php
-	session_start();
 	$kode_mk = $_SESSION['kode_mk'] = $url[1] ;
 	$kelas = $_SESSION['kelas'] =  $url[2] ;
 	var_dump($_SESSION);
