@@ -5,39 +5,45 @@
 	$no_tugas = isset($url[3]) ? $url[3] : false;
 	$nilai_tugas = isset($url[4]) ? $url[4] : false;
 
+	$id_user = $_SESSION["id_user"];
+	$status = $_SESSION["status"];
+	$kode_mk = $_SESSION["kode_mk"];
+	$kelas = $_SESSION["kelas"];
+	$level = $_SESSION["status"];
+
 	if($nilai_tugas){
 		$button = "Update";
 	}else{
 		$button = "Kirim";
 	}
 
-	$id_user = $_SESSION["id_user"];
-	$status = $_SESSION["status"];
-	$kode_mk = $_SESSION["kode_mk"];
+	if($level == "dosen"){
+		$jadwalMhs = mysqli_query($koneksi, "SELECT npm, kode_mk FROM jadwal_mahasiswa WHERE kelas='$kelas' AND kode_mk='$kode_mk'");
+		foreach($jadwalMhs as $rowJadwal){
+			$queryTugas = mysqli_query($koneksi, "SELECT tugas_mahasiswa.*, mahasiswa.nama_mhs FROM tugas_mahasiswa JOIN mahasiswa ON tugas_mahasiswa.npm=mahasiswa.npm WHERE tugas_mahasiswa.npm='$rowJadwal[npm]' AND kode_mk='$rowJadwal[kode_mk]'");
+			foreach($queryTugas as $rowTugas){
+				$queryNilaiTugas = mysqli_query($koneksi, "SELECT nilai_tugas FROM nilai_tugas WHERE npm='$rowTugas[npm]' AND kode_mk='$rowTugas[kode_mk]' AND no_tugas='$rowTugas[no_tugas]'");
 
-	$queryTugas = mysqli_query($koneksi, "SELECT * FROM tugas_mahasiswa WHERE kode_mk='$kode_mk'");
+				$rowNilaiTugas = mysqli_fetch_assoc($queryNilaiTugas);
 
-	$tugasMhs = mysqli_query($koneksi, "SELECT * FROM tugas_mahasiswa WHERE npm='$id_user' AND kode_mk='$kode_mk'");
-
-	function queryNilai( $npm, $kode_mk, $no_tugas ){
-		global $koneksi;
-		global $id_user;
-		global $status;
-
-		$queryNilai = mysqli_query($koneksi, "SELECT * FROM nilai_tugas WHERE npm='$npm' AND kode_mk='$kode_mk' AND no_tugas='$no_tugas'");
-		
-		$rowNilai = mysqli_fetch_assoc($queryNilai);
-		if(mysqli_num_rows($queryNilai) == 0){
-			echo "
-				<td>-</td>";
-				if($id_user && $status == "dosen"){
-					echo "<td><a href='".BASE_URL."nilai_tugas/$npm/$kode_mk/$no_tugas'>Kasih Nilai</a></td>";
+				if(mysqli_num_rows($queryNilaiTugas) == 0){
+					$tilai = "<a href='".BASE_URL."nilai_tugas/$rowTugas[npm]/$rowTugas[kode_mk]/$rowTugas[no_tugas]'>Tilai</a>";
+				}else{
+					$tilai = "<a href='".BASE_URL."nilai_tugas/$rowTugas[npm]/$rowTugas[kode_mk]/$rowTugas[no_tugas]/$rowNilaiTugas[nilai_tugas]'>Edit</a>";
 				}
-		}else{
-			echo "<td>$rowNilai[nilai_tugas]</td>";
-			if($id_user && $status == "dosen"){
-				echo "<td><a href='".BASE_URL."nilai_tugas/$npm/$kode_mk/$no_tugas/$rowNilai[nilai_tugas]'>Update</a><td>";
+
+				$tugas[]=[$rowTugas["npm"], $rowTugas["nama_mhs"], $rowTugas["kode_mk"], $rowTugas["no_tugas"], $rowTugas["file"], $rowNilaiTugas["nilai_tugas"], $tilai];
 			}
+		}
+	}elseif($level == "mahasiswa"){
+		$queryTugasMhs = mysqli_query($koneksi, "SELECT * FROM tugas_mahasiswa WHERE npm='$id_user' AND kode_mk='$kode_mk'");
+		foreach($queryTugasMhs as $rowTugasMhs){
+			$nilaiTugasMhs = mysqli_query($koneksi, "SELECT no_tugas, nilai_tugas FROM nilai_tugas WHERE npm='$rowTugasMhs[npm]' AND kode_mk='$rowTugasMhs[kode_mk]' AND no_tugas='$rowTugasMhs[no_tugas]'");
+
+			$rowNilaiTugasMhs = mysqli_fetch_assoc($nilaiTugasMhs);
+			
+			$tugasMhs[]=[$rowNilaiTugasMhs["no_tugas"], $rowTugasMhs["file"], $rowNilaiTugasMhs["nilai_tugas"]];
+
 		}
 	}
 
