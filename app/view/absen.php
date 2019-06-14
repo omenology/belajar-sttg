@@ -1,3 +1,7 @@
+<?php 
+include_once 'app/module/absen/absen_data.php';
+?>
+
 <a href="<?= BASE_URL.'rekap_absen/kelas' ?>">Rekap Absen</a>
 
 <?php
@@ -19,3 +23,4 @@ if ($_SESSION['status'] == "dosen"):?>
 	</form>
 </div>
 <?php endif;
+echo $data['sudah_absen'].' / '.$data['jumlah_mhs'];
