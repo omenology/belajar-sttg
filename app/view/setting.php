@@ -2,20 +2,27 @@
 	include_once 'app/module/kelas/data_setting.php';
 ?>
 <div class="container">
-	<div>
-		<p>User Id = <?php echo $user_id ?></p>
-		<p>Status = <?php echo $level ?></p>
-		<p>Kode MK = <?php echo $kode_mk ?></p>
-		<p>Kelas = <?php echo $kelas ?></p>
-	</div>
-	<div id="jadwal">
+	<div class="card">
+		<div class="row">
+			<div class="col s6">
+				<p>User Id = <?php echo $user_id ?></p>
+				<p>Status = <?php echo $level ?></p>
+				<p>Kode MK = <?php echo $kode_mk ?></p>
+				<p>Kelas = <?php echo $kelas ?></p>
+			</div>
+			<div class="col s6">
+				<div id="jadwal">
+					<p>ruangan
+					<span><?php echo $row['ruangan'] ?></span><br></p>
+					<p>jam
+					<span><?php echo $row['jam'] ?></span><br></p>
+					<p>Hari
+					<span><?php echo $row['hari'] ?></span><br></p>
+				</div>
+			</div>
+		</div>
 		
-		<label>ruangan</label>
-		<span><?php echo $row['ruangan'] ?></span><br>
-		<label>jam</label>
-		<span><?php echo $row['jam'] ?></span><br>
-		<label>Hari</label>
-		<span><?php echo $row['hari'] ?></span><br>
+		
 	</div>
 	<div class="row">
 		<form class="col s12">
