@@ -12,7 +12,7 @@
 	$pertemuanke = 1;
 
 	if ($status == "dosen") {
-		$query = "SELECT * FROM absen WHERE nidn = '$id_user' AND kode_mk = '$kd_mk' AND kelas = '$kelas' AND status = 'done'";
+		$query = "SELECT  DISTINCT absen_ke FROM absen WHERE nidn = '$id_user' AND kode_mk = '$kd_mk' AND kelas = '$kelas' AND status = 'done'";
 
 		$db->query($query);
 		$pertemuanke += $db->rowCount();

@@ -1,74 +1,56 @@
 <?php
-
 	include_once "app/module/rekap_absen/rekap_absen.php";
 ?>
 <?php if($id_user && $level == "mahasiswa") : ?>
 <div class="container">
 	<?php if($rekap == "depan") : ?>
-		<table>
-			<thead>
-				<tr class="teal lighten-1">
-					<th>No</th>
-					<th>Matakuliah</th>
-					<th>Absen</th>
-					<th>Persentase</th>
-				</tr>
-				
-				<tr>
-					<td></td>
-					<td></td>
-					<th>
-						<?php
-							for($i=1; $i<=14; $i++){
-								echo $i.' ';
-							}
-						?>
-					</th>
-					<td></td>
-				</thead>
+	<table>
+		<thead>
+			<tr class="teal lighten-1">
+				<th rowspan="2">No</th>
+				<th rowspan="2">Matakuliah</th>
+				<th>Absen</th>
+				<th rowspan="2">Persentase</th>
 			</tr>
 			
-			<?php foreach($queryDataAbsenMhs as $rowDataAbsenMhs) { ?>
-				<tr>
-					<td><?= $no++ ?></td>
-					<td><?= $rowDataAbsenMhs["nama_mk"] ?></td>
-				<?php $queryAbsenMhs = mysqli_query($koneksi, "SELECT absen FROM absen WHERE npm='$id_user' AND kode_mk='$rowDataAbsenMhs[kode_mk]' AND STATUS='done'"); ?>
-					<td>
-						<?php foreach ($queryAbsenMhs as $rowAbsenMhs ) {
-							echo $rowAbsenMhs["absen"];
-						} ?>
-					</td>
-				<?php 
-					$queryAbsenMhs = mysqli_query($koneksi, "SELECT absen FROM absen WHERE npm='$id_user' AND kode_mk='$rowDataAbsenMhs[kode_mk]' AND kelas='$rowDataAbsenMhs[kelas]' AND absen='1' AND status='done'");
-
-					$queryAbsenKeMhs = mysqli_query($koneksi, "SELECT absen_ke FROM absen WHERE npm='$rowDataAbsenMhs[npm]' AND kode_mk='$rowDataAbsenMhs[kode_mk]' AND kelas='$rowDataAbsenMhs[kelas]' AND status='done'");
-
-					$persenAbsenMhs= @(mysqli_num_rows($queryAbsenMhs) / mysqli_num_rows($queryAbsenKeMhs) * 100);
-				?>
-					<td><?= $persenAbsenMhs ?></td>
-				</tr>
-			<?php } ?>
-		</table>
+			<tr>
+				<th>
+					<?php
+						for($i=1; $i<=14; $i++){
+							echo $i.' ';
+						}
+					?>
+				</th>
+			</thead>
+		</tr>
+		<?php $i=0; ?>
+		<?php foreach($data['absenMhs'] as $row) : ?>
+		<tr>
+			<td><?= $no++ ?></td>
+			<td><?= $row["nama_mk"] ?></td>
+			<td>
+				<?php foreach($data['absen'][$i] as $row) echo $row['absen']; ?>
+			</td>
+			<?php $persenAbsenMhs = 14/100*$data['absenPersen'][$i]; ?>
+			<td><?= $persenAbsenMhs ?></td>
+		</tr>
+		<?php $i++; endforeach; ?>
+	</table>
 	<?php elseif($rekap == "kelas") : ?>
-			<?= $persenAbsenMhs ?>
+	<?= $persenAbsenMhs ?>
 	<?php endif; ?>
-<?php elseif($id_user && $level == "dosen") : ?>
+	<?php elseif($id_user && $level == "dosen") : ?>
 	<table>
 		<tr>
-			<th>No</th>
-			<th>NPM</th>
-			<th>Nama</th>
-			<th>Mata Kuliah</th>
-			<th>Kelas</th>
+			<th rowspan="2">No</th>
+			<th rowspan="2">NPM</th>
+			<th rowspan="2">Nama</th>
+			<th rowspan="2">Mata Kuliah</th>
+			<th rowspan="2">Kelas</th>
 			<th>Absen</th>
-			<th>Persentasi</th>
+			<th rowspan="2">Persentasi</th>
 		</tr>
 		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
 			<th>
 				<?php
 					for($i=1; $i<=14; $i++){
@@ -76,24 +58,21 @@
 					}
 				?>
 			</th>
-			<td></td>
 		</tr>
-
-		<?php foreach ($queryDataAbsen as $rowDataAbsen) { ?>
-			<tr>
-				<td><?= $no++ ?></td>
-				<td><?= $rowDataAbsen["npm"] ?></td>
-				<td><?= $rowDataAbsen["nama_mhs"] ?></td>
-				<td><?= $rowDataAbsen["nama_mk"] ?></td>
-				<td><?= $rowDataAbsen["kelas"] ?></td>
-		<?php $queryAbsen = mysqli_query($koneksi, "SELECT absen FROM absen WHERE npm='$rowDataAbsen[npm]' AND status='done'"); ?>
-				<td>
-					<?php foreach ($queryAbsen as $rowAbsen) {
-						echo $rowAbsen["absen"];
-					} ?>
-				</td>
-			</tr>
-		<?php } ?>
+		<?php $i=0; ?>
+		<?php foreach ($data['mahasiswa'] as $row): ?>
+		<tr>
+			<td><?= $no++ ?></td>
+			<td><?= $row["npm"] ?></td>
+			<td><?= $row["nama_mhs"] ?></td>
+			<td><?= $row["nama_mk"] ?></td>
+			<td><?= $row["kelas"] ?></td>
+			<td>
+				<?php foreach($data['absen'][$i] as $row) echo $row['absen']; ?>
+			</td>
+			<?php $i++; ?>
+		</tr>
+		<?php endforeach; ?>
 	</table>
 	<?php endif; ?>
 </div>

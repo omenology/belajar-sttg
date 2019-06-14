@@ -2,7 +2,7 @@
 include_once 'app/module/tugas/listTugas_data.php';	
 ?>
 <div class="container">
-	<h2>Materi</h2>
+	<h2>Tugas</h2>
 	<form action="<?=BASE_URL.'app/module/tugas/tugas.php' ?>" method="POST">
 		<input type="text" name="judul">
 		<input type="text" name="deskripsi">
