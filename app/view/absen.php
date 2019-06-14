@@ -15,6 +15,21 @@ if ($_SESSION['status'] == "dosen"):?>
 		<input type="submit" name="btn-absen" value="open">
 		<input type="submit" name="btn-absen" value="done">
 	</form>
+	<?= $data['sudah_absen'].' / '.$data['jumlah_mhs'];?>
+	<table>
+		<tr>
+			<th>NPM</th>
+			<th>Nama</th>
+			<th>Absen</th>
+		</tr>
+		<?php foreach($data['absen_mhs'] as $row): ?>
+		<tr>
+			<td><?= $row['npm'] ?></td>
+			<td><?= $row['nama_mhs'] ?></td>
+			<td><?= $row['absen'] ?></td>
+		</tr>
+		<?php endforeach; ?>
+	</table>
 </div>
 <?php elseif ($open >=1) : ?>
 <div class="container">
@@ -23,4 +38,4 @@ if ($_SESSION['status'] == "dosen"):?>
 	</form>
 </div>
 <?php endif;
-echo $data['sudah_absen'].' / '.$data['jumlah_mhs'];
+
