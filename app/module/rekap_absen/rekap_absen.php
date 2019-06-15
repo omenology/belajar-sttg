@@ -16,7 +16,32 @@
 				
 				$persenAbsenMhs = @(mysqli_num_rows($queryAbsenMhs) / mysqli_num_rows($queryAbsenKeMhs) * 100);
 		}elseif($level == "dosen"){
-			$queryDataAbsen = mysqli_query($koneksi, "SELECT DISTINCT absen.npm, absen.kode_mk, absen.kelas, mahasiswa.nama_mhs, mata_kuliah.nama_mk FROM absen JOIN mahasiswa ON absen.npm=mahasiswa.npm JOIN mata_kuliah ON absen.kode_mk=mata_kuliah.kode WHERE absen.nidn='$id_user' AND absen.kode_mk='$kode_mk' AND absen.kelas='$kelas' AND mata_kuliah.kode='$kode_mk'");
+			$db->query("SELECT DISTINCT absen.npm, absen.kelas, mahasiswa.nama_mhs, mata_kuliah.nama_mk FROM absen JOIN mahasiswa ON absen.npm=mahasiswa.npm JOIN mata_kuliah ON absen.kode_mk=mata_kuliah.kode WHERE absen.nidn=:nidn AND absen.kode_mk=:kdmk AND absen.kelas=:kelas ORDER BY mata_kuliah.nama_mk, absen.npm ASC");
+			$db->bind('nidn',$id_user);
+			$db->bind('kdmk',$kode_mk);
+			$db->bind('kelas',$kelas);
+			$data['mahasiswa'] = $db->resultSet();
+
+			$db->query("SELECT absen FROM absen WHERE npm=:npm AND kode_mk=:kdmk AND status='done'");
+			$db->bind('kdmk',$kode_mk);
+			foreach ($data['mahasiswa'] as $row) {
+				$db->bind('npm',$row['npm']);
+				$data['absen'][] = $db->resultSet();	
+			}
+
+			$db->query("SELECT absen FROM absen WHERE npm=:npm AND kode_mk=:kdmk AND status='done' AND absen = '1'");
+			$db->bind('kdmk',$kode_mk);
+			foreach($data['mahasiswa'] as $row){
+				$db->bind('npm',$row['npm']);
+				$data['absenPersen'][] = $db->rowCount();
+			}
+
+			$db->query("SELECT absen_ke FROM absen WHERE npm=:npm AND kode_mk=:kdmk AND status='done'");
+			$db->bind('kdmk',$kode_mk);
+			foreach($data['mahasiswa'] as $row){
+				$db->bind('npm',$row['npm']);
+				$data['absenKe'][] = $db->rowCount();
+			}
 		}
 	}elseif($rekap == "depan"){
 		if($level == "dosen"){
@@ -29,6 +54,19 @@
 				$db->bind('npm',$row['npm']);
 				$db->bind('kdmk',$row['kode']);
 				$data['absen'][] = $db->resultSet();	
+			}
+			$db->query("SELECT absen FROM absen WHERE npm=:npm AND kode_mk=:kdmk AND status='done' AND absen = '1'");
+			foreach($data['mahasiswa'] as $row){
+				$db->bind('npm',$row['npm']);
+				$db->bind('kdmk',$row['kode']);
+				$data['absenPersen'][] = $db->rowCount();
+			}
+
+			$db->query("SELECT absen_ke FROM absen WHERE npm=:npm AND kode_mk=:kdmk AND status='done'");
+			foreach($data['mahasiswa'] as $row){
+				$db->bind('npm',$row['npm']);
+				$db->bind('kdmk',$row['kode']);
+				$data['absenKe'][] = $db->rowCount();
 			}
 		}elseif($level == "mahasiswa"){
 			$db->query("SELECT DISTINCT absen.kode_mk , absen.kelas, absen.npm,mata_kuliah.nama_mk FROM absen JOIN mata_kuliah ON absen.kode_mk=mata_kuliah.kode WHERE npm=:npm ORDER BY mata_kuliah.nama_mk ASC");
@@ -47,6 +85,13 @@
 			foreach($data['absenMhs'] as $row){
 				$db->bind('kdmk',$row['kode_mk']);
 				$data['absenPersen'][] = $db->rowCount();
+			}
+
+			$db->query("SELECT absen_ke FROM absen WHERE npm=:npm AND kode_mk=:kdmk AND status='done'");
+			$db->bind('npm',$id_user);
+			foreach($data['absenMhs'] as $row){
+				$db->bind('kdmk',$row['kode_mk']);
+				$data['absenKe'][] = $db->rowCount();
 			}
 		}
 		// $queryMhs = mysqli_query($koneksi, "SELECT DISTINCT absen.kode_mk, absen.kelas, mata_kuliah.nama_mk FROM absen JOIN mata_kuliah ON absen.kode_mk=mata_kuliah.kode WHERE absen.npm='$id_user'");
