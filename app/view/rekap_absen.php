@@ -31,7 +31,7 @@
 			<td>
 				<?php foreach($data['absen'][$i] as $row) echo $row['absen']; ?>
 			</td>
-			<?php $persenAbsenMhs = @(100/$data['absenKe'][$i]*$data['absenPersen'][$i]); ?>
+			<?php $persenAbsenMhs = @(100/ $data['absenKe'][$i] *$data['absenPersen'][$i]); ?>
 			<td><?= $persenAbsenMhs ?></td>
 		</tr>
 		<?php $i++; endforeach; ?>
